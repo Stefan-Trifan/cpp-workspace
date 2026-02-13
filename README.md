@@ -1,4 +1,4 @@
-# C-WORKBENCH
+# C++ WORKSPACE
 
 Este repositorio recoge **todo el trabajo, temario y ejercicios** realizados en **programación en C++** durante el segundo curso del grado en Ingeniería del Software.
 

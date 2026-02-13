@@ -1,0 +1,3 @@
+/Users/stephantrf/Desktop/Desarrollo/workspaces/CPP-workspace/debug/cmake-build-debug/CMakeFiles/debug.dir
+/Users/stephantrf/Desktop/Desarrollo/workspaces/CPP-workspace/debug/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/stephantrf/Desktop/Desarrollo/workspaces/CPP-workspace/debug/cmake-build-debug/CMakeFiles/rebuild_cache.dir

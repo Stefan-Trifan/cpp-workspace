@@ -1,6 +1,9 @@
 /*
     Autor
     Stefan Trifan
+
+    #if 0
+    #en  
 */
 
 using namespace std;

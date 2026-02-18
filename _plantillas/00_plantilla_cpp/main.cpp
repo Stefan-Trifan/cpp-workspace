@@ -3,7 +3,8 @@
     Stefan Trifan
 */
 
-// using namespace std;
+using namespace std;
+
 #include <iostream>
 
 int main()

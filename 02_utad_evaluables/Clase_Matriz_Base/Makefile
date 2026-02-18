@@ -3,18 +3,14 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 SRCS = main.cpp Matriz.cpp
-OBJS = $(SRCS:.cpp=.o)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
+all:
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-run: $(TARGET)
+run: all
 	./$(TARGET)
 
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f $(TARGET)
 
-.PHONY: run clean
+.PHONY: all run clean

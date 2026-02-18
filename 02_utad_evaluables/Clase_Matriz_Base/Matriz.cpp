@@ -6,6 +6,11 @@
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 // clang-format on
 
+// _______________________ Constructores
+// _______________________ Destructor
+// _______________________ Operadores
+// _______________________ Métodos Públicos
+
 // Asignacion de matrices
 Matriz &Matriz::operator=(const Matriz &m)
 {
@@ -20,7 +25,8 @@ Matriz &Matriz::operator=(const Matriz &m)
 
 	this->n_filas    = m.n_filas;
 	this->n_columnas = m.n_columnas;
-	this->matriz = NULL;
+	this->matriz     = NULL;
+	
 	if (n_filas > 0 && n_columnas > 0)
 	{
 		matriz = new double *[n_filas];
@@ -72,3 +78,5 @@ void Matriz::mostrarMatriz()
 		cout << endl;
 	}
 }
+
+// _______________________ Métodos Privados

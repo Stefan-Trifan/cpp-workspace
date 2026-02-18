@@ -21,7 +21,6 @@ int main()
 		cin >> operacion;
 		switch (operacion)
 		{
-			// crear matriz manual
 			case 'N':
 				cout << "Creando nueva matriz" << endl;
 				cout << "Introduzca numero filas y columnas ";
@@ -30,7 +29,6 @@ int main()
 				temp = new Matriz(n_filas, n_columnas);
 				temp->rellenarManual();
 				break;
-			// crear matriz aleatoria
 			case 'R':
 				cout << "Creando nueva matriz aleatoria" << endl;
 				cout << "Introduzca numero filas y columnas ";
@@ -41,27 +39,67 @@ int main()
 				cin >> semilla;
 				temp->rellenarAleatorio(semilla);
 				break;
-			// asignar
 			case 'A':
 				a = *temp;
 				cout << "Asignando A" << endl;
 				break;
-			// asignar
 			case 'B':
 				b = *temp;
 				cout << "Asignando B" << endl;
 				break;
-			// asignar
 			case 'C':
 				c = *temp;
 				cout << "Asignando C" << endl;
 				break;
-			// imprimir
+#if 0
+			case 'D':
+				copia = new Matriz(*temp);
+				c     = *copia;
+				cout << "Duplicando" << endl;
+				break;
+			case '+':
+				c = a + b;
+				cout << "C=A+B" << endl;
+				break;
+			case '-':
+				c = a - b;
+				cout << "C=A-B" << endl;
+				break;
+			case '*':
+				cin >> scalar;
+				c = a * scalar;
+				cout << "C=A*val" << endl;
+				break;
+			case 'X':
+				c = a * b;
+				cout << "C=AxB" << endl;
+				break;
+#endif
 			case 'I':
 				cout << "Imprimir C" << endl;
 				c.mostrarMatriz();
 				break;
-			// salir
+#if 0
+			case '>':
+				cout << "Maximo de A: ";
+				cout << a.obtenerMaximo();
+				cout << endl;
+				break;
+			case '<':
+				cout << "Minimo de A: ";
+				cout << a.obtenerMinimo();
+				cout << endl;
+				break;
+			case 'S':
+				cout << "A es simetrica ";
+				cout << a.esSimetrica();
+				cout << endl;
+				break;
+			case 'T':
+				cout << "C=At" << endl;
+				c = a.calcularTraspuesta();
+				break;
+#endif
 			case 'F':
 				cout << "FIN" << endl;
 				break;

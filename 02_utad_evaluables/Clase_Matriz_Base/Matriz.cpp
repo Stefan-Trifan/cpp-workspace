@@ -23,14 +23,13 @@ Matriz::Matriz()
 // Constructor por parámetros. 
 Matriz::Matriz(int n_filas, int n_columnas) : Matriz()   
 {
-    if (n_filas > 0 && n_columnas > 0)
-    {
-        this->n_filas = n_filas;
-        this->n_columnas = n_columnas;
-        matriz = new double*[n_filas];
-        for (int i = 0; i < n_filas; i++)
-            matriz[i] = new double[n_columnas];
-    }
+	assertdomjudge(n_filas > 0 && n_columnas > 0); 
+
+	this->n_filas = n_filas; 
+	this->n_columnas = n_columnas; 
+	matriz = new double*[n_filas]; // n_filas
+	for (int i = 0; i < n_filas; i++) 
+		matriz[i] = new double[n_columnas]; 
 }
 
 // Constructor copia. 
@@ -54,17 +53,39 @@ Matriz::~Matriz()
 // ___________________________________________________
 // ________________________________________ Operadores
 
-// todo Operador suma y resta. 
+// Operador suma y resta. 
 Matriz Matriz::operator+(const Matriz &m) const
 {
-	(void)m;
-	return Matriz();
+	assertdomjudge(n_filas == m.n_filas && n_columnas == m.n_columnas);
+
+	Matriz resultado(n_filas, n_columnas);
+
+	for(int i = 0; i < this->n_filas; i++)
+	{
+		for(int j = 0; j < this->n_columnas; j++)
+		{
+			resultado.matriz[i][j] = this->matriz[i][j] + m.matriz[i][j];
+		}
+	}
+
+	return resultado;
 }
 
 Matriz Matriz::operator-(const Matriz &m) const
 {
-	(void)m;
-	return Matriz();
+	assertdomjudge(n_filas == m.n_filas && n_columnas == m.n_columnas);
+
+	Matriz resultado(n_filas, n_columnas);
+
+	for(int i = 0; i < this->n_filas; i++)
+	{
+		for(int j = 0; j < this->n_columnas; j++)
+		{
+			resultado.matriz[i][j] = this->matriz[i][j] - m.matriz[i][j];
+		}
+	}
+
+	return resultado;
 }
 
 
@@ -83,11 +104,26 @@ Matriz Matriz::operator*(double escalar) const
 	return temp;
 }
 
-// todo Operador producto por una matriz. 
+// Operador producto por una matriz. 
 Matriz Matriz::operator*(const Matriz &m) const
 {
-	(void)m;
-	return Matriz();
+	assertdomjudge(n_columnas == m.n_filas);
+
+	Matriz temp(n_filas, m.n_columnas);
+
+	for(int i = 0; i < n_filas; i++)
+	{
+		for(int j = 0; j < m.n_columnas; j++)
+		{
+			temp.matriz[i][j] = 0;
+			for(int k = 0; k < n_columnas; k++)
+			{
+				temp.matriz[i][j] += matriz[i][k] * m.matriz[k][j];
+			}
+		}
+	}
+
+	return temp;
 }
 
 // Asignacion de matrices
@@ -138,22 +174,65 @@ Matriz Matriz::calcularTraspuesta() const
 	return temp;
 }
 
-// todo Comprueba si es simétrica
+// Comprueba si es simétrica
 bool Matriz::esSimetrica()
 {
+	assertdomjudge(n_filas == n_columnas);
+
+	Matriz temp = this->calcularTraspuesta();
+
+	for(int i = 0; i < n_filas; i++)
+	{
+		for(int j = 0; j < n_columnas; j++)
+		{
+			if(temp.matriz[i][j] != matriz[i][j])
+			{
+				return false;
+			}
+		}
+	}
+
 	return true;
 }
 
-// todo Devuelve el maximo
+// Devuelve el maximo
 double Matriz::obtenerMaximo()
 {
-	return 0.0;
+	assertdomjudge(n_filas > 0 && n_columnas > 0);
+
+	double max = matriz[0][0];
+
+	for(int i = 0; i < n_filas; i++)
+	{
+		for(int j = 0; j < n_columnas; j++)
+		{
+			if(matriz[i][j] >= max)
+			{
+				max = matriz[i][j];
+			}
+		}
+	}
+	return max;
 }
 
-// todo Devuelve el minimo
+// Devuelve el minimo
 double Matriz::obtenerMinimo()
 {
-	return 0.0;
+	assertdomjudge(n_filas > 0 && n_columnas > 0);
+
+	double min = matriz[0][0];
+
+	for(int i = 0; i < n_filas; i++)
+	{
+		for(int j = 0; j < n_columnas; j++)
+		{
+			if(matriz[i][j] <= min)
+			{
+				min = matriz[i][j];
+			}
+		}
+	}
+	return min;
 }
 
 // Leer matriz

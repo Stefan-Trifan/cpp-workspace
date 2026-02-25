@@ -9,7 +9,9 @@ int main()
 	cin >> n;
 	int *x = new int[n];
 	for (int i = 0; i < n; i++)
-    cin >> x[i];
+    {
+        cin >> x[i];
+    }
 	ordenarSeleccion(x, n);
 }
 
@@ -20,7 +22,9 @@ void ordenarSeleccion(int x[], int len)
         /*Añadir código de ordenar mediante selección */
 
         for (int k = 0; k < len; k++)
+        {
             cout << x[k] << " ";
+        }
         cout << endl;
     }
 }

@@ -9,7 +9,9 @@ int main()
 	cin >> n;
 	int *x = new int[n];
 	for (int i = 0; i < n; i++)
-    cin >> x[i];
+    {
+        cin >> x[i];
+    }
 	ordenarBurbuja(x, n);
 }
 
@@ -20,7 +22,9 @@ void ordenarBurbuja(int x[], int len)
         /*Añadir código de ordenación usando algoritmo de burbuja*/
 
         for (int k = 0; k < len; k++)
+        {
             cout << x[k] << " ";
+        }
         cout << endl;
     }
 }

@@ -5,26 +5,49 @@ void ordenarBurbuja(int x[], int len);
 
 int main()
 {
-    int n;
+	int n;
 	cin >> n;
 	int *x = new int[n];
 	for (int i = 0; i < n; i++)
-    {
-        cin >> x[i];
-    }
+	{
+		cin >> x[i];
+	}
 	ordenarBurbuja(x, n);
 }
 
+/**
+ * @brief Algoritmo de ordenación burbuja
+ *
+ * @param x: Array de numeros a ordenar
+ * @param len: Longitud del array
+ *
+ * Se repite tantas veces como numero de lementos
+ * Por cada pasada
+ * - Compara cada par de numeros incrementando de uno en uno
+ * - Reemplaza el numero mas grande hasta que llegue al final de la lista
+ *
+ */
 void ordenarBurbuja(int x[], int len)
 {
-    for (int i = 1; i < len; i++)
-    {
-        /*Añadir código de ordenación usando algoritmo de burbuja*/
+	for (int i = 1; i < len; i++)
+	{
+		/*Añadir código de ordenación usando algoritmo de burbuja*/
 
-        for (int k = 0; k < len; k++)
+        for(int j = 1; j <= len - i ; j++)
         {
-            cout << x[k] << " ";
+            if (x[j] < x[j - 1])
+            {
+                int temp = x[j];
+                x[j]     = x[j - 1];
+                x[j - 1] = temp;
+            }
         }
-        cout << endl;
-    }
+
+        // Imprime estado acutal del array por cada pasada
+		for (int k = 0; k < len; k++)
+		{
+			cout << x[k] << " ";
+		}
+		cout << endl;
+	}
 }

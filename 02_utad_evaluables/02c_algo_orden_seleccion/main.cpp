@@ -5,26 +5,53 @@ void ordenarSeleccion(int x[], int len);
 
 int main()
 {
-    int n;
+	int n;
 	cin >> n;
 	int *x = new int[n];
 	for (int i = 0; i < n; i++)
-    {
-        cin >> x[i];
-    }
+	{
+		cin >> x[i];
+	}
 	ordenarSeleccion(x, n);
 }
 
+/**
+ * @brief Algoritmo de ordenación seleccion
+ *
+ * @param x: Array de numeros a ordenar
+ * @param len: Longitud del array
+ *
+ * Recorremos el array.
+ * Buscamos el elemento menor y lo reemplazamos por el primero
+ * Repetimos el mismo proceso desde el sigueinte elemento y así hasta el final
+ *
+ */
 void ordenarSeleccion(int x[], int len)
 {
-    for (int i = 0; i < len; i++)
-    {
-        /*Añadir código de ordenar mediante selección */
+	for (int i = 0; i < len; i++)
+	{
+		/*Añadir código de ordenar mediante selección */
 
-        for (int k = 0; k < len; k++)
-        {
-            cout << x[k] << " ";
-        }
-        cout << endl;
-    }
+		// Buscamos el menor elemento del array
+		int menor   = x[i];
+		int i_menor = i;
+		for (int j = i; j < len; j++)
+		{
+			if (x[j] < menor)
+			{
+				menor   = x[j];
+				i_menor = j;
+			}
+		}
+
+		int temp   = x[i];
+		x[i]       = x[i_menor];
+		x[i_menor] = temp;
+
+		for (int k = 0; k < len; k++)
+		{
+			cout << x[k] << " ";
+		}
+		cout << endl;
+	}
 }

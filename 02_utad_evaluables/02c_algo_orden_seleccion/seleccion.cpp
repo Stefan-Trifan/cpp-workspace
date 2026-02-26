@@ -25,6 +25,13 @@ int main()
  * Buscamos el elemento menor y lo reemplazamos por el primero
  * Repetimos el mismo proceso desde el sigueinte elemento y así hasta el final
  *
+ * Complejidad
+ * - Analisis Temporal T(n) = 2n^2 + n
+ * - Orden Temporal O(n^2) 
+ *
+ * - Analisis Espacial M(n) = 5
+ * - Orden Espacial O(1)
+ *
  */
 void ordenarSeleccion(int x[], int len)
 {

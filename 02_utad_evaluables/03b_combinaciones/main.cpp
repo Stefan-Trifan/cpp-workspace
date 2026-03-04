@@ -10,6 +10,7 @@
 
 #include <iostream>
 using namespace std;
+#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 
 // Funciones del programa
 
@@ -20,11 +21,8 @@ using namespace std;
 
 int main()
 {
-	cout << "\n________________________________START\n\n";
-
 	// Declaración de variables
 
-	cout << "\n________________________________EXIT\n\n";
 	return 0;
 }
 

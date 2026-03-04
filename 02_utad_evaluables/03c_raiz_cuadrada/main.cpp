@@ -13,8 +13,7 @@ using namespace std;
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 
 // Funciones del programa
-
-// Funciones auxiliares
+float calcular_raiz(int num);
 
 /* _________________________________________
    Inicio main() */
@@ -30,5 +29,14 @@ int main()
    Inicio definicion de funciones */
 
 // Funciones del programa
+float calcular_raiz(int num)
+{
+    // Caso base
+    
+
+    // Reduccion del problema
+
+    // Llamada recursiva
+}
 
 // Funciones auxiliares

@@ -15,8 +15,6 @@ using namespace std;
 // Funciones del programa
 int calcular_combinaciones(int n, int r);
 
-// Funciones auxiliares
-
 /* _________________________________________
    Inicio main() */
 
@@ -69,5 +67,3 @@ int calcular_combinaciones(int n, int r)
     // Llamada recursiva
     return calcular_combinaciones(n - 1, r - 1) + calcular_combinaciones(n - 1, r);
 }
-
-// Funciones auxiliares

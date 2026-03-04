@@ -20,12 +20,12 @@ using namespace std;
 
 int main()
 {
-    cout << "\n________________________________START\n\n";
+	cout << "\n________________________________START\n\n";
 
-    cout << "Hola\n";
+	// Declaración de variables
 
-    cout << "\n________________________________EXIT\n\n";
-    return 0;
+	cout << "\n________________________________EXIT\n\n";
+	return 0;
 }
 
 /* _________________________________________
@@ -34,4 +34,3 @@ int main()
 // Funciones del programa
 
 // Funciones auxiliares
-

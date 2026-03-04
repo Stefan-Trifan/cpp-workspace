@@ -13,7 +13,7 @@ using namespace std;
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 
 // Funciones del programa
-float calcular_raiz(float mitad, float num, float err, float min, float max);
+float calcular_raiz(float num, float err, float min, float max);
 
 /* _________________________________________
    Inicio main() */
@@ -27,7 +27,7 @@ int main()
     cin >> mi_num;
     cin >> mi_err;
 
-    cout << calcular_raiz(mi_num / 2, mi_num, mi_err, 0, mi_num) << '\n';
+    cout << calcular_raiz(mi_num, mi_err, 0, mi_num) << '\n';
 
 	return 0;
 }
@@ -36,29 +36,40 @@ int main()
    Inicio definicion de funciones */
 
 // Funciones del programa
-float calcular_raiz(float mitad, float num, float err, float min, float max)
+/**
+ * @brief Función recursiva que recibe un número, el margen de error.
+ * Por cada iteración se ajusta el mínimo y el máximo
+ * dentro de los cuales se puede encontrar la raíz.
+ *
+ * Buscamos la mitad entre el mínimo y el máximo. Si la mitad al cuadrado es mayor que el número, significa que hay que reducir el maximo al valor de la mitad mitad.
+ * Si la mitad al cuadrado es menor que el número, ajustamos el valor del mínimo a la mitad.
+ *
+ * Complejidad
+ * - Analisis Temporal T(n) =
+ * - Orden Temporal O()
+ *
+ * - Analisis Espacial M(n) =
+ * - Orden Espacial O()
+ */
+float calcular_raiz(float num, float err, float min, float max)
 {
-    printf("Vuelta [mitad]: %.3f\n", mitad);
+    float mitad = (min + max) / 2.0;
+
     // Caso base
     if(mitad * mitad >= num - err && mitad * mitad <= num + err)
     {
-        printf("Base [mitad]: %.3f\n", mitad);
         return mitad;
     }
 
     // Reduccion del problema + Llamada recursiva
     if(mitad * mitad > num)
     {
-        printf("reduccion\n");
-        min = mitad / 2;
         max = mitad;
-        return calcular_raiz((max - mitad) / 2, num, err, min, max);
+        return calcular_raiz(num, err, min, max);
     }
-    else if(mitad * mitad < num)
+    else
     {
-        printf("ampliacion\n");
-        min = mitad / 2;
-        max = mitad;
-        return calcular_raiz(mitad + mitad / 2, num, err, min, max);
+        min = mitad;
+        return calcular_raiz(num, err, min, max);
     }
 }

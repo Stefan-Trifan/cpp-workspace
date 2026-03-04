@@ -66,7 +66,7 @@ int main()
  * el primer índice se cruce con el último índice.
  *
  * Complejidad
- * - Analisis Temporal T(n) = n^2 + 1
+ * - Analisis Temporal T(n) = n/2 + 1
  * - Orden Temporal O(n)
  *
  * - Analisis Espacial M(n) = 0

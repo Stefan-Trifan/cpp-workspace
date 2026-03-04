@@ -12,7 +12,6 @@ using namespace std;
 
 int main()
 {
-    std::cout << "Hola\n";
-    return 0;
+	std::cout << "Hola\n";
+	return 0;
 }
-

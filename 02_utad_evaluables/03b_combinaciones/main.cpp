@@ -10,7 +10,6 @@
 
 #include <iostream>
 using namespace std;
-#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 
 // Funciones del programa
 int calcular_combinaciones(int n, int r);
@@ -23,11 +22,28 @@ int main()
 	// Declaración de variables
     int n;
     int r;
+    int resultado;
 
     cin >> n;
-    cin >> r;
 
-    cout << calcular_combinaciones(n, r) << '\n';
+    while(n > 0)
+    {
+
+        cin >> r;
+
+        if(r > n)
+        {
+            cout << "ERROR" << '\n';
+            cin >> n;
+        }
+        else
+        {
+            resultado = calcular_combinaciones(n, r);
+            cout << resultado << '\n';
+            cin >> n;
+        }
+    }
+
 
 	return 0;
 }

@@ -23,11 +23,19 @@ int main()
 	// Declaración de variables
     float mi_num;
     float mi_err;
+    float resultado;
+
 
     cin >> mi_num;
     cin >> mi_err;
+    if(mi_num < 0 || mi_err < 0)
+    {
+        cout << "ERROR" << '\n';
+        return 0;
+    }
 
-    cout << calcular_raiz(mi_num, mi_err, 0, mi_num) << '\n';
+    resultado = calcular_raiz(mi_num, mi_err, 0, mi_num);
+    cout << resultado << '\n';
 
 	return 0;
 }
@@ -64,11 +72,13 @@ float calcular_raiz(float num, float err, float min, float max)
     // Reduccion del problema + Llamada recursiva
     if(mitad * mitad > num)
     {
+        cout << mitad << '\n';
         max = mitad;
         return calcular_raiz(num, err, min, max);
     }
     else
     {
+        cout << mitad << '\n';
         min = mitad;
         return calcular_raiz(num, err, min, max);
     }

@@ -260,10 +260,17 @@ class Matriz
 		double obtenerMinimo();
 
         /**
-         * @brief 
+         * @brief El caso base es cuando hay una matriz 2x2.
+         *
+         * Mientras no tengamos una matriz 2x2, ejecutamos un for por cada elemento de la primera fila, creamos un matriz de adjuntos y dependiendo si está en una columna par o impar, lo sumamos o lo restamos.
          *
          *
+         * * Complejidad
+         * - Analisis Temporal T(n) =
+         * - Orden Temporal O()
          *
+         * - Analisis Espacial M(n) =
+         * - Orden Espacial O()
          *
          */
 		double calcularDeterminante();

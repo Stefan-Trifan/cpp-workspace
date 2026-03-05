@@ -3,4 +3,6 @@ project(debug)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(debug main.cpp)
+add_executable(debug main.cpp
+        Matriz.cpp
+        Matriz.h)

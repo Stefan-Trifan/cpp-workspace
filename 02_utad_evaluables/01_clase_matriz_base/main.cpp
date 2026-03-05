@@ -12,8 +12,8 @@ int main()
 	int n_columnas;
 	double scalar;
 	long semilla;
-
 	char operacion;
+    
 	do
 	{
 		cout << "Elige operacion:" << endl;

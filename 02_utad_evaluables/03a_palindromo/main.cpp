@@ -66,11 +66,11 @@ int main()
  * el primer índice se cruce con el último índice.
  *
  * Complejidad
- * - Analisis Temporal T(n) = T(n - 2 + 1)
- * - Orden Temporal O()
+ * - Analisis Temporal T(n) = n + 1
+ * - Orden Temporal O(n)
  *
- * - Analisis Espacial M(n) = -
- * - Orden Espacial O()
+ * - Analisis Espacial M(n) = n + 1
+ * - Orden Espacial O(n)
  */
 bool comprobar_palindromo(string text, int i, int j)
 {
@@ -78,7 +78,7 @@ bool comprobar_palindromo(string text, int i, int j)
     {
         return false;
     }
-    else if(i >= j) // i == text.length() / 2
+    else if(i >= j)
     {
         return true;
     }

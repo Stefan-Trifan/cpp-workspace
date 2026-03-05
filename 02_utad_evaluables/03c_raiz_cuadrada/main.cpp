@@ -45,11 +45,11 @@ int main()
  * Si la mitad al cuadrado es menor que el número, ajustamos el valor del mínimo a la mitad.
  *
  * Complejidad
- * - Analisis Temporal T(n) =
- * - Orden Temporal O()
+ * - Analisis Temporal T(n) = T(n/2) + 1
+ * - Orden Temporal O(log((max - min) / err))
  *
- * - Analisis Espacial M(n) =
- * - Orden Espacial O()
+ * - Analisis Espacial M(n) = T(n/2) + 1
+ * - Orden Espacial O(log((max - min) / err))
  */
 float calcular_raiz(float num, float err, float min, float max)
 {

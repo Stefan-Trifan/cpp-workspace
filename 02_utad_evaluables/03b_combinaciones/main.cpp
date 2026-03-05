@@ -42,15 +42,16 @@ int main()
  * Utilizamos la formula recursiva C(n,r) = C(n-1,r-1) + C(n-1,r)
  *
  * Los casos bases son
- * n == r o r = 0 (5C0, 4C0)
+ * n == r
+ * r = 0
  * r = 1
  *
  * Complejidad
- * - Analisis Temporal T(n) =
- * - Orden Temporal O()
+ * - Analisis Temporal T(n) = 2n
+ * - Orden Temporal O(2n)
  *
- * - Analisis Espacial M(n) =
- * - Orden Espacial O()
+ * - Analisis Espacial M(n) = n
+ * - Orden Espacial O(n)
  */
 int calcular_combinaciones(int n, int r)
 {

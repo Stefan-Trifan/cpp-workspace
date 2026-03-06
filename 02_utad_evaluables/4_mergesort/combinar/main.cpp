@@ -2,40 +2,25 @@
 using namespace std;
 
 void combinar(int a[], int len_a, int b[], int len_b, int c[]);
-void ordenarMergeSort(int x[], int len);
 
 int main()
 {
-	int n;
-	cin >> n;
-	int *x = new int[n];
-	for (int i = 0; i < n; i++)
-    {
-		cin >> x[i];
-    }
-	ordenarMergeSort(x, n);
-}
-void ordenarMergeSort(int x[], int len)
-{
-	int temp[len];
+	int a[]   = {1, 3, 5, 7, 9};
+	int len_a = sizeof(a) / sizeof(a[0]);
+	printf("len %d\n", len_a);
 
-	if (len == 2) // caso básico
+	int b[]   = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200};
+	int len_b = sizeof(b) / sizeof(b[0]);
+	printf("len %d\n", len_b);
+
+	int c[len_a + len_b];
+	int len_c = sizeof(c) / sizeof(c[0]);
+
+	combinar(a, len_a, b, len_b, c);
+
+	for (int i = 0; i < len_c; i++)
 	{
-		return;
-	}
-	else
-	{
-		// Ordenar dos mitades
-
-		// Combinar ambas mitades y guardarlo en temp
-
-		// Copiar del array temporal al array resultado
-		for (int k = 0; k < len; k++)
-		{
-			x[k] = temp[k];
-			cout << x[k] << " ";
-		}
-		cout << endl;
+		printf("c[%d] = %d\n", i, c[i]);
 	}
 }
 

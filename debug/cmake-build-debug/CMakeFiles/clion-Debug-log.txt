@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /Users/stephantrf/Desktop/Desarrollo/workspaces/CPP-workspace/debug Select CMakeLists.txt

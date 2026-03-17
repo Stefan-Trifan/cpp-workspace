@@ -1,8 +1,21 @@
-#include <iostream>
-#define TAM 10
+/*
+    Stefan Trifan
 
+    #if 0
+    #en
+*/
+
+/* _________________________________________
+   Inicio cabecera */
+
+#include <iostream>
+// clang-format off
+#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
+// clang-format on
+#define TAM 10
 using namespace std;
 
+// Funciones del programa
 void imprimirLaberinto(char **laberinto)
 {
 	for (int i = 0; i < TAM; i++)
@@ -13,10 +26,17 @@ void imprimirLaberinto(char **laberinto)
 	}
 }
 
-bool buscarTesoro(/*Completa con tus parametros*/) {}
+bool buscarTesoro(); /*Completa con tus parametros*/
+
+// Funciones auxiliares
+
+/* _________________________________________
+   Inicio main() */
 
 int main()
 {
+	// Declaración de variables
+
 	int i, j;
 	int sol_x = 0, sol_y = 0;
 	char **laberinto;
@@ -40,3 +60,21 @@ int main()
 
 	return 0;
 }
+
+/* _________________________________________
+   Inicio definicion de funciones */
+
+// Funciones del programa
+void imprimirLaberinto(char **laberinto)
+{
+	for (int i = 0; i < TAM; i++)
+	{
+		for (int j = 0; j < TAM; j++)
+			cout << laberinto[i][j];
+		cout << endl;
+	}
+}
+
+bool buscarTesoro(/*Completa con tus parametros*/) {}
+
+// Funciones auxiliares

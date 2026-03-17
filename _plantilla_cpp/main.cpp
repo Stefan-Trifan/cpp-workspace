@@ -10,7 +10,9 @@
 
 #include <iostream>
 using namespace std;
+// clang-format off
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
+// clang-format on
 
 // Funciones del programa
 

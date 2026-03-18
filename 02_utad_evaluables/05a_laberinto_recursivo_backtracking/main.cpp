@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-#define TAM 10
+#define TAM 60
 #define START_X 0
 #define START_Y 0
 

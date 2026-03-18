@@ -20,7 +20,7 @@
 using namespace std;
 
 // Funciones del programa
-bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y); // Completar parámetros
+bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y, int i); // Completar parámetros
 
 // Funciones auxiliares
 void imprimirLaberinto(char **laberinto);
@@ -45,7 +45,7 @@ int main()
         }
 	}
 
-	if (buscarTesoro(laberinto, &sol_x, &sol_y, START_X, START_Y)) // Completar parámetros
+	if (buscarTesoro(laberinto, &sol_x, &sol_y, START_X, START_Y, 0)) // Completar parámetros
 	{
         imprimirLaberinto(laberinto);
 		cout << "ENCONTRADO " << sol_x << " " << sol_y << endl;
@@ -84,16 +84,18 @@ int main()
         - Objetivo 'T'
         - Backtrack
 */
-bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Completar parámetros
+bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y, int i) // Completar parámetros
 {
     cout << "\n" << endl;
-    imprimirLaberinto(laberinto); // todo test
 
     //            ☝️  👉  👇  👈
     int dx[4] = { -1,  0,  1,  0};
     int dy[4] = {  0,  1,  0, -1};
     int nx;
     int ny;
+
+    laberinto[x][y] = 'X';
+    imprimirLaberinto(laberinto); // todo test
 
     // Procesamiento + Llamada recursiva
     for(int i = 0; i < 4; i++)
@@ -108,13 +110,11 @@ bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Com
             (nx >= 0 && nx < TAM) && (ny >= 0 && ny < TAM) &&
             (laberinto[nx][ny] != '*' && laberinto[nx][ny] != 'X'))
         {
-            laberinto[x][y] = 'X';
-
             // Caso Valido y caso objetivo
             switch (laberinto[nx][ny])
             {
                 case '.':
-                    return buscarTesoro(laberinto, sol_x, sol_y, nx, ny);
+                    return buscarTesoro(laberinto, sol_x, sol_y, nx, ny, i);
                     break;
                 case 'T':
                     *sol_x = nx;
@@ -125,10 +125,9 @@ bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Com
         }
     }
 
-    laberinto[x][y] = 'X';
-    // nx = x - dx[i];
-    // ny = y - dy[i];
-    // return buscarTesoro(laberinto, sol_x, sol_y, x, y);
+    nx = x - dx[i];
+    ny = y - dy[i];
+    return buscarTesoro(laberinto, sol_x, sol_y, nx, ny, 0);
 
     return false; // todo testing
 }

@@ -94,7 +94,10 @@ bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Com
     int nx;
     int ny;
 
-    laberinto[x][y] = 'X';
+    if (laberinto[x][y] == '.')
+    {
+        laberinto[x][y] = 'X';
+    }
     // imprimirLaberinto(laberinto); // todo test
 
     // Procesamiento + Llamada recursiva
@@ -114,13 +117,15 @@ bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Com
             switch (laberinto[nx][ny])
             {
                 case '.':
-                    encontrado = buscarTesoro(laberinto, sol_x, sol_y, nx, ny);
+                    if (buscarTesoro(laberinto, sol_x, sol_y, nx, ny))
+                    {
+                        return encontrado = true;
+                    }
                     break;
                 case 'T':
-                    encontrado = true;
                     *sol_x = nx;
                     *sol_y = ny;
-                    return encontrado;
+                    return encontrado = true;
                     break;
             }
         }
@@ -130,6 +135,7 @@ bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Com
         };
     }
 
+    laberinto[x][y] = '.';
     return encontrado;
 }
 

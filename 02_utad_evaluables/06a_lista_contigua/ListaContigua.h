@@ -6,7 +6,7 @@ class ListaContigua
 		// ___________________________________________________
 		// _________________________________________ Atributos
 
-        // Num de elementos almacenados actualmente 
+        // Num de elementos almacenados actualmente
         // en la lista contigua
 		int n;
 
@@ -28,13 +28,21 @@ class ListaContigua
 		// _____________________________________ Constructores
 
         /**
-         * @brief Inicializará los atributos n, capacidad e incremento
-         * así como el puntero al vector de enteros */
+         * @brief Inicializa los atributos [n], [capacidad] e [incremento]
+         * así como el [puntero] al vector de enteros
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		ListaContigua(int incremento);
 
         /**
-         * @brief Se encargará de liberar la memoria que fue reservada
-         * de forma dinámica para almacenar el vector */
+         * @brief Se encarga de liberar la memoria que fue reservada
+         * de forma dinámica para almacenar el vector
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
         ~ListaContigua();
 
 		// ___________________________________________________
@@ -42,23 +50,39 @@ class ListaContigua
 
         /**
          * @brief Devuelve el elemento de la lista contigua que
-         * se encuentra en la posición [pos] */
+         * se encuentra en la posición [pos]
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int getValor(int posicion);
 
         /**
          * @brief Modifica el elemento de la lista contigua que
          * se encuentra en la posición [pos] por el valor [val]
          *
-         * OJO: Este elemento tenía que haberse insertado anteriormente */
+         * Este elemento tenía que haberse insertado anteriormente
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void setValor(int posicion, int nuevoValor);
 
         /**
-         * @brief Devuelve el tamaño actual de la lista contigua */
+         * @brief Devuelve el tamaño actual de la lista contigua
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int getN();
 
         /**
          * @brief Devuelve la capacidad de la lista contigua
-         * (Máximo número de elementos que puede albergar) */
+         * (Máximo número de elementos que puede albergar)
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int getCapacidad();
 
         /**
@@ -67,7 +91,11 @@ class ListaContigua
          * para introducirlo (desplazando los elementos
          * a la derecha con memmove) En el caso de que al insertar
          * se alcance la máxima capacidad del vector deberá
-         * incrementarse esta en la cantidad incremento usando realloc */
+         * incrementarse esta en la cantidad incremento usando realloc
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void insertar(int posicion, int nuevoValor);
 
         /**
@@ -78,18 +106,30 @@ class ListaContigua
          * Si al eliminar este elemento el número de elementos del vector
          * es menor o igual que [capacidad − 2 × incremento],
          * se deberá reducir la capacidad en incremento elementos
-         * [capacidad − incremento] */
+         * [capacidad − incremento]
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void eliminar(int posicion);
 
         /**
          * @brief Concatena la lista indicada como parámetro
-         * al final de nuestra lista (almacenada en vector) */
+         * al final de nuestra lista (almacenada en vector)
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void concatenar(ListaContigua *listaAConcatenar);
 
         /**
          * @brief Busca un elemento en la lista contigua
          * con valor igual a [num]
-         * Retorna su posición o -1 si no se ha podido encontrar */
+         * Retorna su posición o -1 si no se ha podido encontrar
+         * 
+         * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int buscar(int elementoABuscar);
 
         // todo borrar

@@ -9,7 +9,7 @@ class ListaEnlazada
 		int n;
 
 		/**
-		 * Puntero a un objeto de tipo struct Nodo definido en el fichero Nodo.h
+		 * Puntero a un objeto de tipo struct Nodo definido en Nodo.h
 		 *
 		 * Esta estructura tiene dos campos:
 		 * - elemento de tipo entero donde se guardará los números
@@ -25,7 +25,11 @@ class ListaEnlazada
 
 		/**
 		 * @brief: Permite obtener el nodo de la lista
-         * que se encuentra en la posición [pos] */
+         * que se encuentra en la posición [pos] 
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		Nodo *getNodo(int posicion);
 
 	public:
@@ -35,12 +39,20 @@ class ListaEnlazada
 		/**
 		 * @brief: Crea una lista de tamaño 0
 		 * Para ello inicializará los atributos [n]
-		 * así como el puntero al primer nodo [Lista]*/
+		 * así como el puntero al primer nodo [Lista]
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		ListaEnlazada();
 
 		/**
-		 * @brief: Se encargará de liberar la memoria
-		 * que fue reservada de forma dinámica para almacenar el vector */
+		 * @brief: Se encarga de liberar la memoria
+		 * que fue reservada de forma dinámica para almacenar el vector 
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		~ListaEnlazada();
 
 		// ___________________________________________________
@@ -49,44 +61,72 @@ class ListaEnlazada
 		/**
 		 * @brief: Devuelve el elemento de la lista contigua
          * que se encuentra en la posición [pos]
-         * (Utiliza internamente getNodo)*/
+         * (Utiliza internamente getNodo)
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int getValor(int posicion);
 
 		/**
 		 * @brief: Modifica el elemento de la lista contigua
          * que se encuentra en la posición [pos] por el valor [val]
          * (Utiliza internamente getNodo)
-		 * OJO: Este elemento tenía que haberse insertado anteriormente*/
+		 * Este elemento tenía que haberse insertado anteriormente
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void setValor(int posicion, int nuevoValor);
 
 		/**
-		 * @brief: Devuelve el tamaño actual de la lista contigua */
+		 * @brief: Devuelve el tamaño actual de la lista contigua 
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int getN();
 
 		/**
 		 * @brief: Inserta un nuevo elemento en la posición [pos]
          * de la lista con valor val,
          * cambiando los punteros correspondientes
-         * (Utiliza internamente getNodo) */
+         * (Utiliza internamente getNodo) 
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void insertar(int posicion, int nuevoValor);
 
 		/**
 		 * @brief: Elimina el elemento que se encuentra en la posición [pos]
 		 * cambiando los punteros correspondientes
-		 * (Utiliza internamente getNodo)*/
+		 * (Utiliza internamente getNodo)
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void eliminar(int posicion);
 
 		/**
 		 * @brief: Concatena la lista indicada como parámetro
          * al final de nuestra lista
-         * (No utiliza internamente getNodo)*/
+         * (No utiliza internamente getNodo)
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		void concatenar(ListaEnlazada *listaAConcatenar);
 
 		/**
 		 * @brief: Busca un elemento en la lista contigua
          * con valor igual a [num] y retorna su posición o
          * [-1] si no se ha podido encontrar
-		 * (No utiliza internamente getNodo)*/
+		 * (No utiliza internamente getNodo)
+		 *
+		 * Complejidad
+		 * - Temporal: O()
+		 * - Espacial: O() */
 		int buscar(int elementoABuscar);
 
 		// todo borrar

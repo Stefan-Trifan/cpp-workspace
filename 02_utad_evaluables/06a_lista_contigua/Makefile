@@ -8,6 +8,9 @@ $(TARGET): main.cpp ListaContigua.cpp
 run: $(TARGET)
 	./$(TARGET)
 
+run_test: $(TARGET)
+	./$(TARGET) < 1.in
+
 clean:
 	rm -f $(TARGET)
 

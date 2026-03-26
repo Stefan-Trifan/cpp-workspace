@@ -17,22 +17,37 @@ T
 I 5 6
 M
 T
-C 6
+S 0 6
 M
 T
-E 0
+S 1 5
 M
 T
-E 0
+S 2 4
 M
 T
-E 0
+S 3 3
 M
 T
-E 0
+S 4 2
 M
 T
-E 0
+S 5 1
+M
+T
+E 5
+M
+T
+E 4
+M
+T
+E 3
+M
+T
+E 2
+M
+T
+E 1
 M
 T
 E 0

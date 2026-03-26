@@ -1,25 +1,25 @@
 N 2
-I 0 6
-T
-I 0 5
-T
-I 0 4
-T
-I 0 3
-T
-I 0 2
-T
 I 0 1
 T
-E 5
+I 1 2
 T
-E 4
+I 2 3
 T
-E 3
+I 3 4
 T
-E 2
+I 4 5
 T
-E 1
+I 5 6
+T
+E 0
+T
+E 0
+T
+E 0
+T
+E 0
+T
+E 0
 T
 E 0
 T

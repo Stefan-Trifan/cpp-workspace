@@ -1,73 +1,98 @@
 #include "ListaContigua.h"
 #include "assertdomjudge.h"
 
-using namespace std; 
+using namespace std;
 
 // ___________________________________________________
 // _____________________________________ Constructores
 
 ListaContigua::ListaContigua(int incremento)
 {
-    (void)incremento;
+    assertdomjudge(incremento >= 1);
+    this->n = 0;
+    this->capacidad = incremento;
+    this->incremento = incremento;
+    this->vector = new int[this->capacidad];
 }
 
+// todo
 ListaContigua::~ListaContigua()
 {
 
 }
 
 // ___________________________________________________
-// __________________________________ Métodos Públicos
+// ____________________________________________ Getter
 
+// todo
+int ListaContigua::getN()
+{
+    return this->n;
+}
+
+// todo
 int ListaContigua::getValor(int posicion)
 {
-    (void)posicion;
+    return this->vector[posicion];
+}
+
+
+// todo
+int ListaContigua::getCapacidad()
+{
     return 0;
 }
 
+// ___________________________________________________
+// ____________________________________________ Setter
+
+// todo
 void ListaContigua::setValor(int posicion, int nuevoValor)
 {
     (void)posicion;
     (void)nuevoValor;
 }
 
-int ListaContigua::getN()
-{
-    return 0;
-}
 
-int ListaContigua::getCapacidad()
-{
-    return 0;
-}
+// ___________________________________________________
+// __________________________________ Métodos Públicos
 
+// todo
 void ListaContigua::insertar(int posicion, int nuevoValor)
 {
-    (void)posicion;
-    (void)nuevoValor;
+    assertdomjudge(posicion >= 0);
+    vector[posicion] = nuevoValor;
 }
 
+// todo
 void ListaContigua::eliminar(int posicion)
 {
     (void)posicion;
 }
 
+// todo
 void ListaContigua::concatenar(ListaContigua *listaAConcatenar)
 {
     (void)listaAConcatenar;
 }
 
+// todo
 int ListaContigua::buscar(int elementoABuscar)
 {
     (void)elementoABuscar;
     return 0;
 }
 
-// todo borrar
-void ListaContigua::borrarEsteMetodo()
+void ListaContigua::toString()
 {
-    incremento = 0;
-    vector = nullptr;
-    n = 0;
-    capacidad = 0;
+    for(int i = 0; i < capacidad; i++)
+    {
+        cout << '[' << vector[i] << ']';
+    }
+    cout << endl;
+    for(int i = 0; i < capacidad; i++)
+    {
+        cout << ' ' << i << ' ';
+    }
+    cout << endl;
 }

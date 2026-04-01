@@ -13,7 +13,7 @@ class ListaContigua
 		// Max elementos que se pueden almacenar en la lista
 		int capacidad;
 
-		// Num de posiciones que incrementa/decrementa
+		// Num de poses que incrementa/decrementa
 		// la capacidad de la ListaContigua cuando es necesario
 		int incremento;
 
@@ -64,7 +64,7 @@ class ListaContigua
 		 * Complejidad
 		 * - Temporal: O()
 		 * - Espacial: O() */
-		int getValor(int posicion);
+		int getValor(int pos);
 
 		/**
 		 * @brief Devuelve la capacidad de la lista contigua
@@ -87,7 +87,7 @@ class ListaContigua
 		 * Complejidad
 		 * - Temporal: O()
 		 * - Espacial: O() */
-		void setValor(int posicion, int nuevoValor);
+		void setValor(int pos, int nuevoValor);
 
 		// ___________________________________________________
 		// __________________________________ Métodos Públicos
@@ -106,7 +106,7 @@ class ListaContigua
 		 * Complejidad
 		 * - Temporal: O()
 		 * - Espacial: O() */
-		void insertar(int posicion, int nuevoValor);
+		void insertar(int pos, int nuevoValor);
 
 		/**
 		 * @brief Elimina el elemento que se encuentra en la posición pos
@@ -121,7 +121,7 @@ class ListaContigua
 		 * Complejidad
 		 * - Temporal: O()
 		 * - Espacial: O() */
-		void eliminar(int posicion);
+		void eliminar(int pos);
 
 		/**
 		 * @brief Concatena la lista indicada como parámetro

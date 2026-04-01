@@ -42,15 +42,18 @@ int main()
 
     printf("\n_________________________________________START\n\n");
 
-    cout << "Creando nueva lista" << endl;
-    cout << "Introduzca incremento\n-> ";
-    incremento = 10;
+    // Creamos nueva lista
+    incremento = 5;
     lista = new ListaContigua(incremento);
     cout << endl;
 
+    // Insertamos elementos
+    lista->insertar(0, 8);
+    lista->insertar(1, 8);
+    lista->insertar(2, 8);
+    lista->insertar(3, 8);
+    lista->insertar(4, 8);
     lista->toString();
-    lista->insertar(0, 0);
-    lista->insertar(1, 2);
 
     printf("\n_________________________________________EXIT\n\n");
 

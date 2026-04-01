@@ -8,91 +8,129 @@ using namespace std;
 
 ListaContigua::ListaContigua(int incremento)
 {
-    assertdomjudge(incremento >= 1);
-    this->n = 0;
-    this->capacidad = incremento;
-    this->incremento = incremento;
-    this->vector = new int[this->capacidad];
+	assertdomjudge(incremento >= 1);
+	this->n          = 0;
+	this->incremento = incremento;
+	this->capacidad  = incremento;
+	// this->vector     = (int *)malloc(sizeof(int) * this->capacidad);
 }
 
 // todo
-ListaContigua::~ListaContigua()
-{
-
-}
+ListaContigua::~ListaContigua() {}
 
 // ___________________________________________________
 // ____________________________________________ Getter
 
-// todo
-int ListaContigua::getN()
+int ListaContigua::getN() { return this->n; }
+
+int ListaContigua::getValor(int pos)
 {
-    return this->n;
+	assertdomjudge(pos < capacidad);
+	return this->vector[pos];
 }
 
-// todo
-int ListaContigua::getValor(int posicion)
-{
-    return this->vector[posicion];
-}
-
-
-// todo
-int ListaContigua::getCapacidad()
-{
-    return 0;
-}
+int ListaContigua::getCapacidad() { return this->capacidad; }
 
 // ___________________________________________________
 // ____________________________________________ Setter
 
 // todo
-void ListaContigua::setValor(int posicion, int nuevoValor)
+void ListaContigua::setValor(int pos, int nuevoValor)
 {
-    (void)posicion;
-    (void)nuevoValor;
+	(void)pos;
+	(void)nuevoValor;
 }
-
 
 // ___________________________________________________
 // __________________________________ Métodos Públicos
 
-// todo
-void ListaContigua::insertar(int posicion, int nuevoValor)
+// * doing
+void ListaContigua::insertar(int pos, int nuevoValor)
 {
-    assertdomjudge(posicion >= 0);
-    vector[posicion] = nuevoValor;
+	assertdomjudge(pos >= 0 && pos <= n);
+
+    // CASOS
+	// Espacio Disponible / Ultimo elemento
+	if (pos == n && n < capacidad)
+	{
+        vector[pos] = nuevoValor;
+		n++;
+	}
+	// Espacio Disponible / Elemento intermedio
+    if(pos < n && n < capacidad)
+    {
+        // Desplazamiento
+    }
+
+	// No espacio disponible / Ultimo elemento
+	if (pos == n && n == capacidad)
+	{
+		// Realloc sin desplazamiento
+	}
+	// No espacio disponible / Elemento intermedio
+	if(pos < n && n == capacidad)
+    {
+        // Realloc con desplazamiento
+    }
 }
 
 // todo
-void ListaContigua::eliminar(int posicion)
-{
-    (void)posicion;
-}
+void ListaContigua::eliminar(int pos) { (void)pos; }
 
 // todo
-void ListaContigua::concatenar(ListaContigua *listaAConcatenar)
-{
-    (void)listaAConcatenar;
-}
+void ListaContigua::concatenar(ListaContigua *listaAConcatenar) { (void)listaAConcatenar; }
 
 // todo
 int ListaContigua::buscar(int elementoABuscar)
 {
-    (void)elementoABuscar;
-    return 0;
+	(void)elementoABuscar;
+	return 0;
 }
 
 void ListaContigua::toString()
 {
-    for(int i = 0; i < capacidad; i++)
-    {
-        cout << '[' << vector[i] << ']';
-    }
-    cout << endl;
-    for(int i = 0; i < capacidad; i++)
-    {
-        cout << ' ' << i << ' ';
-    }
-    cout << endl;
+	cout << " incremento = +" << incremento << endl;
+	cout << " capacidad  = " << capacidad << endl;
+	cout << " n          = " << n << '\n' << endl;
+	cout << " n    ";
+	for (int i = 1; i < 10; i++)
+	{
+		if (i != capacidad)
+		{
+			cout << ' ' << i << ' ';
+		}
+		else
+		{
+			cout << ' ' << i << '|';
+		}
+	}
+	cout << endl;
+	cout << "      ";
+	for (int i = 0; i < capacidad; i++)
+	{
+		if (vector[i] > 0)
+		{
+			cout << '|' << vector[i] << '|';
+		}
+		else if (vector[i] == 0)
+		{
+			cout << '|' << '_' << '|';
+		}
+	}
+	cout << endl;
+	cout << " pos  ";
+	for (int i = 0; i < 9; i++)
+	{
+		if (i != capacidad - 1)
+		{
+			cout << ' ' << i << ' ';
+		}
+		else
+		{
+			cout << ' ' << i << '|';
+		}
+	}
+	cout << '\n' << '\n';
+
+	cout << "└─────────────────────────────" << endl;
 }

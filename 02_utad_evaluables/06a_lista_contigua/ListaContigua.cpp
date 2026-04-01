@@ -11,17 +11,21 @@ ListaContigua::ListaContigua(int incremento)
 	assertdomjudge(incremento >= 1);
 	this->n          = 0;
 	this->incremento = incremento;
-	this->capacidad  = incremento;
-	// this->vector     = (int *)malloc(sizeof(int) * this->capacidad);
+	this->capacidad  = 0;
 }
 
 // todo
-ListaContigua::~ListaContigua() {}
+ListaContigua::~ListaContigua()
+{
+}
 
 // ___________________________________________________
 // ____________________________________________ Getter
 
-int ListaContigua::getN() { return this->n; }
+int ListaContigua::getN()
+{
+	return this->n;
+}
 
 int ListaContigua::getValor(int pos)
 {
@@ -29,56 +33,64 @@ int ListaContigua::getValor(int pos)
 	return this->vector[pos];
 }
 
-int ListaContigua::getCapacidad() { return this->capacidad; }
+int ListaContigua::getCapacidad()
+{
+	return this->capacidad;
+}
 
 // ___________________________________________________
 // ____________________________________________ Setter
 
-// todo
 void ListaContigua::setValor(int pos, int nuevoValor)
 {
-	(void)pos;
-	(void)nuevoValor;
+	vector[pos] = nuevoValor;
 }
 
 // ___________________________________________________
 // __________________________________ Métodos Públicos
 
-// * doing
 void ListaContigua::insertar(int pos, int nuevoValor)
 {
 	assertdomjudge(pos >= 0 && pos <= n);
 
-    // CASOS
-	// Espacio Disponible / Ultimo elemento
-	if (pos == n && n < capacidad)
+	// Comprobamos capacidad disponible
+	// Incrementamos si es necesario
+	if (n == capacidad)
 	{
-        vector[pos] = nuevoValor;
+		this->vector = (int *)realloc(this->vector, (capacidad + incremento) * sizeof(int));
+
+		this->capacidad += this->incremento;
+	}
+
+	// CASOS
+	if (pos == n) // Ultimo elemento
+	{
+		vector[pos] = nuevoValor;
 		n++;
 	}
-	// Espacio Disponible / Elemento intermedio
-    if(pos < n && n < capacidad)
-    {
-        // Desplazamiento
-    }
-
-	// No espacio disponible / Ultimo elemento
-	if (pos == n && n == capacidad)
+	else if (pos < n) // Elemento intermedio
 	{
-		// Realloc sin desplazamiento
+		// Desplazamiento
+		for (int i = n - 1; i >= pos; i--)
+		{
+			vector[i + 1] = vector[i];
+		}
+		vector[pos] = nuevoValor;
+		n++;
 	}
-	// No espacio disponible / Elemento intermedio
-	if(pos < n && n == capacidad)
-    {
-        // Realloc con desplazamiento
-    }
 }
 
 // todo
-void ListaContigua::eliminar(int pos) { (void)pos; }
+void ListaContigua::eliminar(int pos)
+{
+	(void)pos;
+}
 
 // todo
-void ListaContigua::concatenar(ListaContigua *listaAConcatenar) { (void)listaAConcatenar; }
+void ListaContigua::concatenar(ListaContigua *listaAConcatenar)
+{
+	(void)listaAConcatenar;
+}
 
 // todo
 int ListaContigua::buscar(int elementoABuscar)
@@ -87,6 +99,7 @@ int ListaContigua::buscar(int elementoABuscar)
 	return 0;
 }
 
+// debug/testing
 void ListaContigua::toString()
 {
 	cout << " incremento = +" << incremento << endl;

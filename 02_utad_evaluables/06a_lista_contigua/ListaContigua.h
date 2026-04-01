@@ -142,5 +142,6 @@ class ListaContigua
 		 * - Espacial: O() */
 		int buscar(int elementoABuscar);
 
+        // debug / testing
         void toString();
 };

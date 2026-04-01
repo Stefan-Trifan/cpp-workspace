@@ -43,16 +43,25 @@ int main()
     printf("\n_________________________________________START\n\n");
 
     // Creamos nueva lista
-    incremento = 5;
+    incremento = 3;
     lista = new ListaContigua(incremento);
     cout << endl;
 
     // Insertamos elementos
+    // insertar(pos, valor)
     lista->insertar(0, 8);
-    lista->insertar(1, 8);
-    lista->insertar(2, 8);
-    lista->insertar(3, 8);
-    lista->insertar(4, 8);
+    lista->insertar(1, 7);
+    lista->insertar(0, 9);
+    lista->insertar(3, 5);
+    // lista->insertar(4, 4);
+    // lista->insertar(3, 6);
+    // lista->insertar(4, 6);
+    // lista->insertar(2, 9);
+    // lista->insertar(2, 9);
+    // lista->insertar(2, 9);
+    // lista->insertar(2, 9);
+    // lista->insertar(2, 9);
+    // lista->insertar(2, 9);
     lista->toString();
 
     printf("\n_________________________________________EXIT\n\n");

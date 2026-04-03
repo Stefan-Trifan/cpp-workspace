@@ -128,7 +128,4 @@ class ListaEnlazada
 		 * - Temporal: O()
 		 * - Espacial: O() */
 		int buscar(int elementoABuscar);
-
-		// todo borrar
-		void borrarEsteMetodo();
 };

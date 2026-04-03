@@ -115,8 +115,7 @@ class ListaContigua
 		 *
 		 * Si al eliminar este elemento el número de elementos del vector
 		 * es menor o igual que [capacidad − 2 × incremento],
-		 * se deberá reducir la capacidad en incremento elementos
-		 * [capacidad − incremento]
+		 * se deberá reducir la capacidad en incremento elementos * [capacidad − incremento]
 		 *
 		 * Complejidad
 		 * - Temporal: O()

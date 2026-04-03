@@ -17,6 +17,7 @@ ListaContigua::ListaContigua(int incremento)
 // todo
 ListaContigua::~ListaContigua()
 {
+    free(vector);
 }
 
 // ___________________________________________________
@@ -80,23 +81,63 @@ void ListaContigua::insertar(int pos, int nuevoValor)
 	}
 }
 
-// todo
 void ListaContigua::eliminar(int pos)
 {
-	(void)pos;
+	assertdomjudge(pos <= n - 1);
+
+	// Ultimo elemento
+	if (pos == n - 1)
+	{
+		n--;
+	}
+	else if (pos < n - 1)
+	{
+		for (int i = pos; i <= n - 1; i++)
+		{
+			vector[i] = vector[i + 1];
+		}
+		n--;
+	}
+
+	// Liberamos memoria
+	if (n <= (capacidad - 2 * incremento))
+	{
+		this->vector = (int *)realloc(this->vector, (capacidad - incremento) * sizeof(int));
+
+		this->capacidad -= this->incremento;
+		cout << "borrado" << endl;
+	}
 }
 
-// todo
 void ListaContigua::concatenar(ListaContigua *listaAConcatenar)
 {
-	(void)listaAConcatenar;
+	int num_total_elementos = this->n + listaAConcatenar->getN();
+    int n_original = this->n;
+
+	// Reservamos memoria vector += listaAConcatenar
+	this->vector = (int *)realloc(this->vector, num_total_elementos * sizeof(int));
+    capacidad = num_total_elementos;
+
+	// Concatenamos
+	int j = 0;
+	for (int i = n_original; i < n_original + listaAConcatenar->getN(); i++)
+	{
+		vector[i] = listaAConcatenar->getValor(j);
+		j++;
+	}
+    this->n += listaAConcatenar->getN();
 }
 
-// todo
 int ListaContigua::buscar(int elementoABuscar)
 {
-	(void)elementoABuscar;
-	return 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (vector[i] == elementoABuscar)
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 // debug/testing
@@ -105,6 +146,8 @@ void ListaContigua::toString()
 	cout << " incremento = +" << incremento << endl;
 	cout << " capacidad  = " << capacidad << endl;
 	cout << " n          = " << n << '\n' << endl;
+
+	// N
 	cout << " n    ";
 	for (int i = 1; i < 10; i++)
 	{
@@ -118,8 +161,18 @@ void ListaContigua::toString()
 		}
 	}
 	cout << endl;
+
+	// Capacidad
 	cout << "      ";
 	for (int i = 0; i < capacidad; i++)
+	{
+		cout << ' ' << '-' << ' ';
+	}
+	cout << endl;
+
+	// Elementos del array
+	cout << "      ";
+	for (int i = 0; i < n; i++)
 	{
 		if (vector[i] > 0)
 		{
@@ -131,6 +184,16 @@ void ListaContigua::toString()
 		}
 	}
 	cout << endl;
+
+	// Capacidad
+	cout << "      ";
+	for (int i = 0; i < capacidad; i++)
+	{
+		cout << ' ' << '-' << ' ';
+	}
+	cout << endl;
+
+	// Posicion
 	cout << " pos  ";
 	for (int i = 0; i < 9; i++)
 	{

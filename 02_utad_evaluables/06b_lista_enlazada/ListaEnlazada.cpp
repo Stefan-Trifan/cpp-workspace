@@ -58,10 +58,3 @@ int ListaEnlazada::buscar(int elementoABuscar)
     (void)elementoABuscar;
     return 0;
 }
-
-// todo borrar
-void ListaEnlazada::borrarEsteMetodo()
-{
-    n = 0;
-    lista = nullptr;
-};

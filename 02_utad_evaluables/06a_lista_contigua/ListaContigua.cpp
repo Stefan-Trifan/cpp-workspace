@@ -10,11 +10,11 @@ ListaContigua::ListaContigua(int incremento)
 {
 	assertdomjudge(incremento >= 1);
 	this->n          = 0;
-	this->incremento = incremento;
 	this->capacidad  = 0;
+	this->incremento = incremento;
+    this->vector = NULL;
 }
 
-// todo
 ListaContigua::~ListaContigua()
 {
     free(vector);
@@ -30,7 +30,7 @@ int ListaContigua::getN()
 
 int ListaContigua::getValor(int pos)
 {
-	assertdomjudge(pos < capacidad);
+	assertdomjudge(pos < n);
 	return this->vector[pos];
 }
 
@@ -44,6 +44,7 @@ int ListaContigua::getCapacidad()
 
 void ListaContigua::setValor(int pos, int nuevoValor)
 {
+    assertdomjudge(pos >= 0 && pos < n);
 	vector[pos] = nuevoValor;
 }
 
@@ -83,7 +84,7 @@ void ListaContigua::insertar(int pos, int nuevoValor)
 
 void ListaContigua::eliminar(int pos)
 {
-	assertdomjudge(pos <= n - 1);
+	assertdomjudge(pos >= 0 && pos < n);
 
 	// Ultimo elemento
 	if (pos == n - 1)
@@ -92,7 +93,7 @@ void ListaContigua::eliminar(int pos)
 	}
 	else if (pos < n - 1)
 	{
-		for (int i = pos; i <= n - 1; i++)
+		for (int i = pos; i < n - 1; i++)
 		{
 			vector[i] = vector[i + 1];
 		}
@@ -100,32 +101,36 @@ void ListaContigua::eliminar(int pos)
 	}
 
 	// Liberamos memoria
-	if (n <= (capacidad - 2 * incremento))
+	if (capacidad > incremento && n <= (capacidad - 2 * incremento))
 	{
 		this->vector = (int *)realloc(this->vector, (capacidad - incremento) * sizeof(int));
 
 		this->capacidad -= this->incremento;
-		cout << "borrado" << endl;
 	}
 }
 
 void ListaContigua::concatenar(ListaContigua *listaAConcatenar)
 {
-	int num_total_elementos = this->n + listaAConcatenar->getN();
-    int n_original = this->n;
+	int elementosAConcatenar = listaAConcatenar->getN();
+	int n_original = this->n;
 
-	// Reservamos memoria vector += listaAConcatenar
-	this->vector = (int *)realloc(this->vector, num_total_elementos * sizeof(int));
-    capacidad = num_total_elementos;
+	// Aumentamos capacidad en bloques de incremento
+	while (this->n + elementosAConcatenar > this->capacidad)
+	{
+		this->vector = (int *)realloc(
+			this->vector,
+			(this->capacidad + this->incremento) * sizeof(int));
+
+		this->capacidad += this->incremento;
+	}
 
 	// Concatenamos
-	int j = 0;
-	for (int i = n_original; i < n_original + listaAConcatenar->getN(); i++)
+	for (int i = 0; i < elementosAConcatenar; i++)
 	{
-		vector[i] = listaAConcatenar->getValor(j);
-		j++;
+		this->vector[n_original + i] = listaAConcatenar->getValor(i);
 	}
-    this->n += listaAConcatenar->getN();
+
+	this->n += elementosAConcatenar;
 }
 
 int ListaContigua::buscar(int elementoABuscar)

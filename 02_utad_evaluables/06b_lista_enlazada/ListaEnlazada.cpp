@@ -122,31 +122,35 @@ void ListaEnlazada::insertar(int pos, int nuevoValor)
 
 	// Buscamos el nodo deseado:
 
-    // * CASO 1: Primer nodo
-    // Obtenemos primer nodo (lista)
-    // Apuntamos nuevo_nodo a primer nodo
-    // Apuntamos lista a nuevo_nodo
     if(pos == 0)
     {
-        Nodo* aux;
+        // * CASO 1: Primer nodo
+        // Obtenemos primer nodo (lista)
+        // Apuntamos nuevo_nodo a primer nodo
+        // Apuntamos lista a nuevo_nodo
+        nuevoNodo->siguienteNodo = lista;
         lista = nuevoNodo;
     }
-
-
-    // * CASO 2: Ultima posicion
-    // Obtenemos ultimo nodo con getNodo(n - 1)
-    // Apuntamos el ultimo nodo a nuevo_nodo
-    // nuevo_nodo->nullptr
-
-    // * CASO 3: Nodo intermedio
-    // ...->nodo(pos-1)->nodo(pos)->...
-    //                   nuevo_nodo
-    // Obtenemos el nodo con getNodo(pos)
-    // Obtenemos el nodo(-1) con getNodo(pos - 1)
-
+    else if(pos == n)
+    {
+        // * CASO 2: Ultima posicion
+        // Obtenemos ultimo nodo con getNodo(n - 1)
+        // Apuntamos el ultimo nodo a nuevo_nodo
+        // nuevo_nodo->nullptr
+        getNodo(n - 1)->siguienteNodo = nuevoNodo;
+    }
+    else if(pos > 0 && pos < n)
+    {
+        // * CASO 3: Nodo intermedio
+        // ...->nodo(pos-1)->nodo(pos)->...
+        //                   nuevo_nodo
+        // Obtenemos el nodo con getNodo(pos)
+        // Obtenemos el nodo(-1) con getNodo(pos - 1)
+        nuevoNodo->siguienteNodo = getNodo(pos);
+        getNodo(pos - 1)->siguienteNodo = nuevoNodo;
+    }
     // nuevo_nodo->nodo(pos)
     // nodo(pos-1)->nuevo_nodo
-
     // resultado:
     // nodo(pos-1)->nuevo_nodo->nodo(pos)->...
 

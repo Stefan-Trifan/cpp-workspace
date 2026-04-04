@@ -24,8 +24,12 @@ int main()
     ListaEnlazada listaEnlazada;
 
     //                 ( pos, valor)
-    listaEnlazada.insertar(0, 8);
+    listaEnlazada.insertar(0, 1);
+    listaEnlazada.insertar(1, 2);
+    listaEnlazada.insertar(2, 3);
+    listaEnlazada.insertar(3, 4);
     listaEnlazada.insertar(0, 9);
+    listaEnlazada.insertar(4, 66);
 
     listaEnlazada.toString();
 
@@ -63,8 +67,8 @@ int main()
 // int getN();
 // Nodo *getNodo(int pos);
 // void toString();
-
 // void insertar(int pos, int nuevoValor);
+
 
 // int getValor(int pos);
 // void setValor(int pos, int nuevoValor);

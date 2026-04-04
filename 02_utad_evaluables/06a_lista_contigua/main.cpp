@@ -34,6 +34,11 @@ int main()
 	lista1->insertar(1, 2);
 	lista1->insertar(2, 3);
 	lista1->insertar(3, 4);
+	lista1->insertar(4, 5);
+	lista1->toString();
+	lista1->insertar(1, 9);
+	lista1->toString();
+	lista1->eliminar(2);
 	lista1->toString();
 
 	printf("\n_________________________________________EXIT\n\n");

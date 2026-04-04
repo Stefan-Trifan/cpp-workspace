@@ -1,5 +1,8 @@
 #include "ListaContigua.h"
 #include "assertdomjudge.h"
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
 
 using namespace std;
 
@@ -12,7 +15,7 @@ ListaContigua::ListaContigua(int incremento)
 	this->n          = 0;
 	this->capacidad  = 0;
 	this->incremento = incremento;
-    this->vector = NULL;
+    this->vector = nullptr;
 }
 
 ListaContigua::~ListaContigua()
@@ -30,7 +33,7 @@ int ListaContigua::getN()
 
 int ListaContigua::getValor(int pos)
 {
-	assertdomjudge(pos < n);
+	assertdomjudge(pos >= 0 && pos < n);
 	return this->vector[pos];
 }
 
@@ -73,10 +76,16 @@ void ListaContigua::insertar(int pos, int nuevoValor)
 	else if (pos < n) // Elemento intermedio
 	{
 		// Desplazamiento
-		for (int i = n - 1; i >= pos; i--)
+
+        /* Solucion sin memmove
+        for (int i = n - 1; i >= pos; i--)
 		{
 			vector[i + 1] = vector[i];
-		}
+		} */
+
+        // memmove(destino, origen, numero_bytes);
+        memmove(&vector[pos + 1], &vector[pos], sizeof(int) * (n - pos));
+
 		vector[pos] = nuevoValor;
 		n++;
 	}
@@ -93,10 +102,15 @@ void ListaContigua::eliminar(int pos)
 	}
 	else if (pos < n - 1)
 	{
+        /* Solucion sin memmove
 		for (int i = pos; i < n - 1; i++)
 		{
 			vector[i] = vector[i + 1];
-		}
+		} */
+
+        // memmove(destino, origen, numero_bytes);
+        // memmove(&vector[pos], &vector[pos + 1], sizeof(int) * (n - pos));
+        memmove(&vector[pos], &vector[pos + 1], sizeof(int) * (n - pos - 1));
 		n--;
 	}
 

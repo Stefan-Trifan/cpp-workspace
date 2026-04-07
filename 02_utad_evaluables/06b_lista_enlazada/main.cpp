@@ -21,18 +21,20 @@ int main()
 	printf("\n_________________________________________START\n\n");
 
 	// Declaración de variables
-    ListaEnlazada listaEnlazada;
+    ListaEnlazada listaEnlazada1;
+    ListaEnlazada listaEnlazada2;
 
     //                 ( pos, valor)
-    listaEnlazada.insertar(0, 1);
-    listaEnlazada.insertar(1, 2);
-    listaEnlazada.insertar(2, 3);
-    listaEnlazada.insertar(3, 4);
-    listaEnlazada.insertar(0, 9);
-    listaEnlazada.insertar(4, 66);
+    listaEnlazada1.insertar(0, 9);
+    listaEnlazada1.insertar(1, 8);
+    listaEnlazada1.insertar(2, 7);
 
-    listaEnlazada.toString();
+    listaEnlazada2.insertar(0, 6);
+    listaEnlazada2.insertar(1, 5);
+    listaEnlazada2.insertar(2, 4);
 
+    listaEnlazada1.concatenar(&listaEnlazada2);
+    listaEnlazada1.toString();
 
     /* // GetNodo
     Nodo nodo0;
@@ -68,11 +70,10 @@ int main()
 // Nodo *getNodo(int pos);
 // void toString();
 // void insertar(int pos, int nuevoValor);
-
-
 // int getValor(int pos);
 // void setValor(int pos, int nuevoValor);
-// void eliminar(int pos);
 // int buscar(int elementoABuscar);
+// void eliminar(int pos);
 // void concatenar(ListaEnlazada *listaAConcatenar);
+
 // ~ListaEnlazada();

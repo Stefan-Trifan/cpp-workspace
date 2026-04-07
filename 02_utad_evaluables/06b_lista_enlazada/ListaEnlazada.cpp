@@ -25,10 +25,21 @@ ListaEnlazada::ListaEnlazada()
 // todo 8
 ListaEnlazada::~ListaEnlazada()
 {
-    // Recorremos la lista desde el primer nodo, de uno en uno
-    // Guardamos en variable auxiliar el siguiente nodo
-    // Eliminamos nodo actual con delete
-    // Avanzamos al siguiente nodo
+	// Recorremos la lista desde el primer nodo, de uno en uno
+	// Guardamos en variable auxiliar el siguiente nodo
+	// Eliminamos nodo actual con delete
+	// Avanzamos al siguiente nodo
+	Nodo *aux = lista;
+
+	while (aux != nullptr)
+	{
+		Nodo *siguiente = aux->siguienteNodo;
+		delete aux;
+		aux = siguiente;
+	}
+
+	lista = nullptr;
+	n     = 0;
 }
 
 // ___________________________________________________
@@ -38,7 +49,7 @@ ListaEnlazada::~ListaEnlazada()
  * */
 int ListaEnlazada::getN()
 {
-    return this->n;
+	return this->n;
 }
 
 /**
@@ -46,15 +57,15 @@ int ListaEnlazada::getN()
  * que se encuentra en la posición [pos]
  * (Utiliza internamente getNodo)
  * */
-// todo 2
 int ListaEnlazada::getValor(int pos)
 {
-    // Precondiciones
-    assertdomjudge(pos >= 0 && pos < n)
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n)
 
-	// Buscamos el nodo con getNodo(pos)
-	// Devolvemos su valor
-	return -1;
+	    // Buscamos el nodo con getNodo(pos)
+	    // Devolvemos su valor
+	    return getNodo(pos)
+	        ->elemento;
 }
 
 /**
@@ -63,19 +74,19 @@ int ListaEnlazada::getValor(int pos)
  * */
 Nodo *ListaEnlazada::getNodo(int pos)
 {
-    // Precondiciones
-    assertdomjudge(pos >= 0 && pos < n);
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n);
 
-    Nodo *miNodo = lista;
+	Nodo *miNodo = lista;
 
-    // Empezamos desde lista (primer nodo)
-    // Recorremos los nodos de uno en uno
-    // Cuando alcancemos el nodo en la
-    // posicion [pos], lo devolvemos
-    for(int i = 0; i < pos; i++)
-    {
-        miNodo = miNodo->siguienteNodo;
-    }
+	// Empezamos desde lista (primer nodo)
+	// Recorremos los nodos de uno en uno
+	// Cuando alcancemos el nodo en la
+	// posicion [pos], lo devolvemos
+	for (int i = 0; i < pos; i++)
+	{
+		miNodo = miNodo->siguienteNodo;
+	}
 	return miNodo;
 }
 
@@ -88,14 +99,15 @@ Nodo *ListaEnlazada::getNodo(int pos)
  * (Utiliza internamente getNodo)
  * Este elemento tenía que haberse insertado anteriormente
  * */
-// todo 3
 void ListaEnlazada::setValor(int pos, int nuevoValor)
 {
-    // Precondiciones
-    assertdomjudge(pos >= 0 && pos < n)
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n)
 
-	// Obtenemos el nodo con getNodo(pos)
-	// Reemplazamos su elemento por [nuevoValor]
+	    // Obtenemos el nodo con getNodo(pos)
+	    // Reemplazamos su elemento por [nuevoValor]
+	    getNodo(pos)
+	        ->elemento = nuevoValor;
 }
 
 // ___________________________________________________
@@ -107,54 +119,53 @@ void ListaEnlazada::setValor(int pos, int nuevoValor)
  * cambiando los punteros correspondientes
  * (Utiliza internamente getNodo)
  * */
-// todo 4
 void ListaEnlazada::insertar(int pos, int nuevoValor)
 {
-    // Precondiciones
-    assertdomjudge(pos >= 0 && pos <= n)
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos <= n)
 
-	// Creamos nuevo_nodo
-	// nuevo_nodo->elemento = nuevoValor
-	// nuevo_nodo->siguienteNodo = nullptr
-    Nodo* nuevoNodo = new Nodo;
-    nuevoNodo->elemento = nuevoValor;
-    nuevoNodo->siguienteNodo = nullptr;
+	    // Creamos nuevo_nodo
+	    // nuevo_nodo->elemento = nuevoValor
+	    // nuevo_nodo->siguienteNodo = nullptr
+	    Nodo *nuevoNodo      = new Nodo;
+	nuevoNodo->elemento      = nuevoValor;
+	nuevoNodo->siguienteNodo = nullptr;
 
 	// Buscamos el nodo deseado:
 
-    if(pos == 0)
-    {
-        // * CASO 1: Primer nodo
-        // Obtenemos primer nodo (lista)
-        // Apuntamos nuevo_nodo a primer nodo
-        // Apuntamos lista a nuevo_nodo
-        nuevoNodo->siguienteNodo = lista;
-        lista = nuevoNodo;
-    }
-    else if(pos == n)
-    {
-        // * CASO 2: Ultima posicion
-        // Obtenemos ultimo nodo con getNodo(n - 1)
-        // Apuntamos el ultimo nodo a nuevo_nodo
-        // nuevo_nodo->nullptr
-        getNodo(n - 1)->siguienteNodo = nuevoNodo;
-    }
-    else if(pos > 0 && pos < n)
-    {
-        // * CASO 3: Nodo intermedio
-        // ...->nodo(pos-1)->nodo(pos)->...
-        //                   nuevo_nodo
-        // Obtenemos el nodo con getNodo(pos)
-        // Obtenemos el nodo(-1) con getNodo(pos - 1)
-        nuevoNodo->siguienteNodo = getNodo(pos);
-        getNodo(pos - 1)->siguienteNodo = nuevoNodo;
-    }
-    // nuevo_nodo->nodo(pos)
-    // nodo(pos-1)->nuevo_nodo
-    // resultado:
-    // nodo(pos-1)->nuevo_nodo->nodo(pos)->...
+	if (pos == 0)
+	{
+		// * CASO 1: Primer nodo
+		// Obtenemos primer nodo (lista)
+		// Apuntamos nuevo_nodo a primer nodo
+		// Apuntamos lista a nuevo_nodo
+		nuevoNodo->siguienteNodo = lista;
+		lista                    = nuevoNodo;
+	}
+	else if (pos == n)
+	{
+		// * CASO 2: Ultima posicion
+		// Obtenemos ultimo nodo con getNodo(n - 1)
+		// Apuntamos el ultimo nodo a nuevo_nodo
+		// nuevo_nodo->nullptr
+		getNodo(n - 1)->siguienteNodo = nuevoNodo;
+	}
+	else if (pos > 0 && pos < n)
+	{
+		// * CASO 3: Nodo intermedio
+		// ...->nodo(pos-1)->nodo(pos)->...
+		//                   nuevo_nodo
+		// Obtenemos el nodo con getNodo(pos)
+		// Obtenemos el nodo(-1) con getNodo(pos - 1)
+		nuevoNodo->siguienteNodo        = getNodo(pos);
+		getNodo(pos - 1)->siguienteNodo = nuevoNodo;
+	}
+	// nuevo_nodo->nodo(pos)
+	// nodo(pos-1)->nuevo_nodo
+	// resultado:
+	// nodo(pos-1)->nuevo_nodo->nodo(pos)->...
 
-    n++;
+	n++;
 }
 
 /**
@@ -162,33 +173,49 @@ void ListaEnlazada::insertar(int pos, int nuevoValor)
  * cambiando los punteros correspondientes
  * (Utiliza internamente getNodo)
  * */
-// todo 5
 void ListaEnlazada::eliminar(int pos)
 {
-    // Precondiciones
-    assertdomjudge(pos >= 0 && pos < n)
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n)
+
+	    Nodo *aux;
 
 	// Buscamos el nodo deseado:
-
-    // * CASO 1: Eliminar Primer nodo
-    // Obtenemos primer nodo con getNodo(0)
-    // Apuntamos con variable auxiliar Primer nodo
-    // Apuntamos lista a segundo nodo
-    // Delete donde apunta la variable auxiliar
-
-    // * CASO 2: Eliminar Ultima posicion
-    // Obtenemos ultimo nodo con getNodo(n - 1)
-    // Auxiliar apunta a ultimo nodo
-    // Penultima posicion apunta a nullptr
-    // Delete donde apunta la variable auxiliar
-
-    // * CASO 3: Eliminar Nodo intermedio
-    // Obtenemos nodo(pos) con getNodo(pos)
-    // Obtenemos nodo(-1) con getNodo(pos - 1)
-    // Variable auxiliar apunta a nodo(0)
-    // nodo(-1)->nodo(+1)
-    // Delete donde apunta la variable auxiliar
-
+	if (pos == 0)
+	{
+		// * CASO 1: Eliminar Primer nodo
+		// Obtenemos primer nodo con getNodo(0)
+		// Apuntamos con variable auxiliar Primer nodo
+		// Apuntamos lista a segundo nodo
+		// Delete donde apunta la variable auxiliar
+		aux   = lista;
+		lista = lista->siguienteNodo;
+		delete aux;
+	}
+	else if (pos == n - 1)
+	{
+		// * CASO 2: Eliminar Ultima posicion
+		// Obtenemos ultimo nodo con getNodo(n - 1)
+		// Auxiliar apunta a ultimo nodo
+		// Penultima posicion apunta a nullptr
+		// Delete donde apunta la variable auxiliar
+		aux                           = getNodo(n - 1);
+		getNodo(n - 2)->siguienteNodo = nullptr;
+		delete aux;
+	}
+	else if (pos > 0 && pos < n - 1)
+	{
+		// * CASO 3: Eliminar Nodo intermedio
+		// Obtenemos nodo(pos) con getNodo(pos)
+		// Obtenemos nodo(-1) con getNodo(pos - 1)
+		// Variable auxiliar apunta a nodo(0)
+		// nodo(-1)->nodo(+1)
+		// Delete donde apunta la variable auxiliar
+		aux                             = getNodo(pos);
+		getNodo(pos - 1)->siguienteNodo = getNodo(pos + 1);
+		delete aux;
+	}
+	n--;
 }
 
 /**
@@ -196,12 +223,28 @@ void ListaEnlazada::eliminar(int pos)
  * al final de nuestra lista
  * (No utiliza internamente getNodo)
  * */
-// todo 7
 void ListaEnlazada::concatenar(ListaEnlazada *listaAConcatenar)
 {
 	// Recorremos todos los nodos hasta encontrar el ultimo
 	// Apuntamos el ultimo nodo a listaAConcatenar->lista
-    // Actualizamos n sumando los elementos concatenados
+	// Actualizamos n sumando los elementos concatenados
+	// Si nuestra lista está vacía, simplemente apuntamos al inicio
+	if (lista == nullptr)
+	{
+		lista = listaAConcatenar->lista;
+	}
+	else
+	{
+		Nodo *aux = lista;
+		while (aux->siguienteNodo != nullptr)
+		{
+			aux = aux->siguienteNodo;
+		}
+
+		aux->siguienteNodo = listaAConcatenar->lista;
+	}
+
+	n += listaAConcatenar->n;
 }
 
 /**
@@ -211,13 +254,22 @@ void ListaEnlazada::concatenar(ListaEnlazada *listaAConcatenar)
  * - [-1] si no se ha podido encontrar
  * (No utiliza internamente getNodo)
  * */
-// todo 6
 int ListaEnlazada::buscar(int elementoABuscar)
 {
 	// Recorremos los nodos de uno en uno, guardando la posicion actual
 	// Comparamos cada nodo->elemento con [elementoABuscar]
 	// Si coincide, devolvemos la posicion.
-
+	Nodo *miNodo = lista;
+	int pos      = 0;
+	while (miNodo != nullptr)
+	{
+		if (miNodo->elemento == elementoABuscar)
+		{
+			return pos;
+		}
+		miNodo = miNodo->siguienteNodo;
+		pos++;
+	}
 	// Si llegamos al final de la lista y no hay coincidencias
 	// , devovlemos -1
 	return -1;
@@ -226,22 +278,23 @@ int ListaEnlazada::buscar(int elementoABuscar)
 void ListaEnlazada::toString()
 {
 	// Recorremos cada nodo de uno en uno, empezando desde lista
-    // Recorremos hasta nullptr
+	// Recorremos hasta nullptr
 	// Por cada nodo imprimimos su posicion y su elemento
+	cout << '\n';
+	Nodo *miNodo = lista;
+	int posicion = 0;
 
-    Nodo *miNodo = lista;
-    int posicion = 0;
-
-    while(miNodo != nullptr)
-    {
-        cout << miNodo->elemento << ' ';
-        miNodo = miNodo->siguienteNodo;
-        posicion++;
-    }
-    cout << "\n\n";
-    for(int i = 0; i < posicion; i++)
-    {
-        cout << i << ' ';
-    }
-    cout << '\n';
+	while (miNodo != nullptr)
+	{
+		cout << miNodo->elemento << ' ';
+		miNodo = miNodo->siguienteNodo;
+		posicion++;
+	}
+	cout << "\n\n";
+	for (int i = 0; i < posicion; i++)
+	{
+		cout << i << ' ';
+	}
+	cout << '\n';
+	cout << '\n';
 }

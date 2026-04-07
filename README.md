@@ -7,13 +7,14 @@ Incluye tanto el contenido de la asignatura como el material adicional que he co
 ## Contenido del repositorio
 
 - **Temario de clase** de Análisis y Diseño de Algoritmos
+- **Proyectos evaluables** 
 - **Ejercicios hechos en clase** 
 - **Ejercicios de refuerzo** para mejorar comprensión y soltura
-- **Proyectos evaluables** 
+<!-- - **Mi propia librería en C** -->
 <!-- - **Entorno de pruebas** -->
 
 ## Objetivo
 
-Este repositorio sirve como **banco de trabajo y aprendizaje** para dominar el lenguaje C+ desde los fundamentos hasta estructuras de datos más avanzadas.
+Este repositorio sirve como **banco de trabajo y aprendizaje** para dominar el lenguaje C++ desde los fundamentos hasta estructuras de datos más avanzadas.
 
-Es una referencia personal, pero también puede ser útil para otros estudiantes que estén empezando a programar en C+ o cursando asignaturas similares.
+Es una referencia personal, pero también puede ser útil para otros estudiantes que estén empezando a programar en C++ o cursando asignaturas similares.

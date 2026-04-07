@@ -10,7 +10,7 @@ Incluye tanto el contenido de la asignatura como el material adicional que he co
 - **Ejercicios hechos en clase** 
 - **Ejercicios de refuerzo** para mejorar comprensión y soltura
 - **Proyectos evaluables** 
-- **Entorno de pruebas**
+<!-- - **Entorno de pruebas** -->
 
 ## Objetivo
 

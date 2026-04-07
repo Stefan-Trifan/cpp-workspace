@@ -1,5 +1,7 @@
 # Carpeta raíz específica
 /01_utad_temario/
+/libreria/
+/pruebas/
 
 # Archivos del sistema
 .DS_Store

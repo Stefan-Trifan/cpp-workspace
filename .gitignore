@@ -1,2 +1,18 @@
+# Carpeta raíz específica
+/01_utad_temario/
+
+# Archivos del sistema
 .DS_Store
-.vscode
+
+# VSCode
+.vscode/
+
+# Archivos de testing
+*.in
+*.ans
+
+# Archivos compilados
+*.o
+
+# Binarios generados
+main

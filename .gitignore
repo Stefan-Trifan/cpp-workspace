@@ -2,6 +2,8 @@
 /01_utad_temario/
 /libreria/
 /pruebas/
+/_plantilla_c/
+/_plantilla_cpp/
 
 # Archivos del sistema
 .DS_Store

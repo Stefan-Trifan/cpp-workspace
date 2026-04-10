@@ -22,7 +22,6 @@ ListaEnlazada::ListaEnlazada()
  * @brief: Se encarga de liberar la memoria
  * que fue reservada de forma dinámica para almacenar el vector
  * */
-// todo 8
 ListaEnlazada::~ListaEnlazada()
 {
 	// Recorremos la lista desde el primer nodo, de uno en uno
@@ -106,8 +105,7 @@ void ListaEnlazada::setValor(int pos, int nuevoValor)
 
 	    // Obtenemos el nodo con getNodo(pos)
 	    // Reemplazamos su elemento por [nuevoValor]
-	    getNodo(pos)
-	        ->elemento = nuevoValor;
+	    getNodo(pos)->elemento = nuevoValor;
 }
 
 // ___________________________________________________

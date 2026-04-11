@@ -1,36 +1,34 @@
-/*
-    Stefan Trifan
-
-    #if 0
-    #en
-*/
-
-/* _________________________________________
-   Inicio cabecera */
-
+#include "Pila.h"
+#include "assertdomjudge.h"
 #include <iostream>
 using namespace std;
-// clang-format off
-#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
-// clang-format on
 
-// Funciones del programa
-
-// Funciones auxiliares
-
-/* _________________________________________
-   Inicio main() */
+void Hanoi(int n, Pila *origen, Pila *destino, Pila *temporal);
 
 int main()
 {
-	// Declaración de variables
+    Pila *A = new Pila("A");
+	Pila *B = new Pila("B");
+	Pila *C = new Pila("C");
+
+	int n;
+	cin >> n;
+
+	for (int i = n; i > 0; i--)
+    {
+		A->apilar(i);
+    }
+
+	Hanoi(n, A, C, B);
+
+	for (int i = 0; i < n; i++)
+	{
+		C->desapilar();
+	}
 
 	return 0;
 }
 
-/* _________________________________________
-   Inicio definicion de funciones */
-
-// Funciones del programa
-
-// Funciones auxiliares
+void Hanoi(int n, Pila *origen, Pila *destino, Pila *temporal)
+{
+}

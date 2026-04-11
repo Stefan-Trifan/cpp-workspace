@@ -1,14 +1,10 @@
-TARGET = main
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+main: main.cpp Pila.cpp
+	g++ main.cpp Pila.cpp -o main
 
-$(TARGET): main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp -o $(TARGET)
-
-run: $(TARGET)
-	./$(TARGET)
+run: main
+	./main
 
 clean:
-	rm -f $(TARGET)
+	rm -f main
 
 .PHONY: run clean

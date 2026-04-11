@@ -1,33 +1,35 @@
 #include "Pila.h"
+using namespace std;
 
 // ______________ Constructor
 
-/**
- * @brief Constructor con parámetros de la estrucutra Pila.
- * Inicializará el puntero a la cima
- * Asignará el nombre indicado a la pila.
+/** @brief
+ * Constructor con parámetros de la estrucutra Pila.
+ * - Asignará el nombre indicado a la pila.
+ * - Inicializará el puntero a la cima
  * */
-// todo
 Pila::Pila(string name)
 {
+	this->name = name;
+    this->cima = nullptr;
 }
 
 // ___________________ Getter
 
-/**
- * @brief Devuelve el nombre de la pila.
+/** @brief
+ * Devuelve el nombre de la pila.
  * */
-// todo
-std::string Pila::nombrePila()
+string Pila::nombrePila()
 {
-    return "Hola";
+	return this->name;
 }
 
 // _________ Metodos Públicos
 
-/**
- * @brief Recibe un num que representará el tam del disco
- * y lo colocará en la cima de la pila.
+/** @brief
+ * Recibe un num
+ * - Representará el tam del disco
+ * - Lo colocará en la cima de la pila.
  * Deberá imprimir por pantalla el movimiento realizado:
  * “Apilando disco N en poste P”
  * */
@@ -35,12 +37,25 @@ std::string Pila::nombrePila()
 void Pila::apilar(int num)
 {
 	cout << "Apilando disco " << num << " en poste " << name << endl;
+
+    // cima apunta a nuevo nodo, creado con constructor
+    if(cima == nullptr)
+    {
+        cima = new Nodo(num, nullptr);
+    }
+    else
+    {
+        Nodo *aux = cima;
+        cima = new Nodo(num, nullptr);
+        cima->siguiente = aux;
+    }
+
 }
 
-/**
- * @brief Devuelve el num que se encuentra en la cima de la pila
- * que representará al tamaña del disco
- * que se encuentra en la parte superior.
+/** @brief
+ * Devuelve el num que se encuentra en la cima de la pila:
+ * - Representará al tam del disco
+ * - Se encuentra en la parte superior
  * Deberá indicar por pantalla el movimiento realizado:
  * “Desapilando disco N del poste P”
  * */
@@ -48,14 +63,26 @@ void Pila::apilar(int num)
 int Pila::desapilar()
 {
 	cout << "Desapilando disco " /* << num */ << " del poste " << name << endl;
-    return 0;
+	return 0;
 }
 
-/**
- * @brief Indica si la pila se encuentra vacía.
+/** @brief
+ * Indica si la pila se encuentra vacía.
  * */
 // todo
 bool Pila::estaVacia()
 {
-    return 0;
+	return 0;
+}
+
+void Pila::toString()
+{
+    Nodo* aux = cima;
+	while(aux != nullptr)
+    {
+        cout << aux->valor << ' ';
+        aux = aux->siguiente;
+    }
+
+    cout << endl;
 }

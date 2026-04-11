@@ -3,21 +3,39 @@
 #include <iostream>
 using namespace std;
 
+void hanoi(int n, Pila *origen, Pila *temporal, Pila *destino);
+
 int main()
 {
-	printf("\n_______________________START\n\n");
+	Pila *A = new Pila("A");
+	Pila *B = new Pila("B");
+	Pila *C = new Pila("C");
 
-	Pila miPila("Duracell");
+	int n;
+	cin >> n;
 
-    miPila.apilar(1);
-    miPila.toString();
-    miPila.apilar(2);
-    miPila.toString();
-    miPila.apilar(3);
-    miPila.toString();
-    miPila.apilar(4);
-    miPila.toString();
+    // Creamos pila A
+	for (int i = n; i > 0; i--)
+	{
+		A->apilar(i);
+	}
 
-	printf("\n_______________________EXIT\n\n");
+	hanoi(n, A, B, C);
+
+	for (int i = 0; i < n; i++)
+	{
+		C->desapilar();
+	}
+
 	return 0;
+}
+
+void hanoi(int n, Pila *origen, Pila *temporal, Pila *destino)
+{
+    if(n > 0)
+    {
+        hanoi(n - 1, origen, destino, temporal);
+        destino->apilar(origen->desapilar());
+        hanoi(n - 1, temporal, origen, destino);
+    }
 }

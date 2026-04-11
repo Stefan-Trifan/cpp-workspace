@@ -33,23 +33,12 @@ string Pila::nombrePila()
  * Deberá imprimir por pantalla el movimiento realizado:
  * “Apilando disco N en poste P”
  * */
-// todo
 void Pila::apilar(int num)
 {
 	cout << "Apilando disco " << num << " en poste " << name << endl;
 
     // cima apunta a nuevo nodo, creado con constructor
-    if(cima == nullptr)
-    {
-        cima = new Nodo(num, nullptr);
-    }
-    else
-    {
-        Nodo *aux = cima;
-        cima = new Nodo(num, nullptr);
-        cima->siguiente = aux;
-    }
-
+    cima = new Nodo(num, cima);
 }
 
 /** @brief
@@ -59,22 +48,27 @@ void Pila::apilar(int num)
  * Deberá indicar por pantalla el movimiento realizado:
  * “Desapilando disco N del poste P”
  * */
-// todo
 int Pila::desapilar()
 {
-	cout << "Desapilando disco " /* << num */ << " del poste " << name << endl;
-	return 0;
+    cout << "Desapilando disco " << cima->valor << " del poste " << name << endl;
+    int valor = cima->valor;
+
+    Nodo* aux = cima;
+    cima = cima->siguiente;
+    delete aux;
+
+	return valor;
 }
 
 /** @brief
  * Indica si la pila se encuentra vacía.
  * */
-// todo
 bool Pila::estaVacia()
 {
-	return 0;
+	return cima == nullptr;
 }
 
+// debug
 void Pila::toString()
 {
     Nodo* aux = cima;

@@ -13,6 +13,7 @@ int main()
 
 	int n;
 	cin >> n;
+    assertdomjudge(n > 0);
 
     // Creamos pila A
 	for (int i = n; i > 0; i--)

@@ -7,4 +7,7 @@ run: main
 clean:
 	rm -f main
 
+run_test: main
+	./main < 1.in
+
 .PHONY: run clean

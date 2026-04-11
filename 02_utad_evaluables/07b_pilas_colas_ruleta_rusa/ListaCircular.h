@@ -3,7 +3,8 @@
 
 class ListaCircular
 {
-	private:
+    // todo borrar public despues
+	public:
 		// _____________________________
 		// Atributos
 		int n;
@@ -32,6 +33,8 @@ class ListaCircular
 		// Metodos Públicos
 		void insertar(int pos, string nuevoValor);
 		void eliminar(int pos);
-		void girar(int p);
+		void girar(int pos);
+
+        // debug
 		void toString();
 };

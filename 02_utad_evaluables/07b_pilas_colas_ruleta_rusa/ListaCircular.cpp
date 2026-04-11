@@ -8,10 +8,29 @@ using namespace std;
 
 // __________________________________________________
 // ___________________________________ Método Privado
-// todo doing
 Nodo* ListaCircular::getNodo(int pos)
 {
-	Nodo* miNodo;
+	assertdomjudge(n > 0);
+
+	Nodo* miNodo = actual;
+
+	int numVueltas = abs(pos) % n;
+
+	if (pos > 0)
+	{
+		for (int i = 0; i < numVueltas; i++)
+		{
+			miNodo = miNodo->siguienteNodo;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < numVueltas; i++)
+		{
+			miNodo = miNodo->anteriorNodo;
+		}
+	}
+
 	return miNodo;
 }
 
@@ -23,9 +42,12 @@ ListaCircular::ListaCircular()
 	actual = nullptr;
 }
 
-// todo
 ListaCircular::~ListaCircular()
 {
+    while(n > 0)
+    {
+        eliminar(0);
+    }
 }
 
 // __________________________________________________
@@ -33,11 +55,8 @@ ListaCircular::~ListaCircular()
 /** @brief
  * Devuelve el string que se encuentra
  * en la posición pos de la lista. */
-// todo test
 string ListaCircular::getValor(int pos)
 {
-	assertdomjudge(pos >= 0 && pos < n);
-
 	return getNodo(pos)->elemento;
 }
 
@@ -48,11 +67,8 @@ int ListaCircular::getN()
 
 // __________________________________________________
 // ___________________________________________ Setter
-// todo test
 void ListaCircular::setValor(int pos, string nuevoValor)
 {
-	assertdomjudge(pos >= 0 && pos < n);
-
 	getNodo(pos)->elemento = nuevoValor;
 }
 
@@ -60,17 +76,30 @@ void ListaCircular::setValor(int pos, string nuevoValor)
 // _________________________________ Metodos Públicos
 /** @brief
  * Introduce nuevo nodo en la posición pos de la lista. */
-// todo doing
 void ListaCircular::insertar(int pos, string nuevoValor)
 {
-	assertdomjudge(pos >= 0 && pos <= n);
-
-	Nodo* nuevoNodo          = new Nodo;
-	nuevoNodo->elemento      = nuevoValor;
-	nuevoNodo->anteriorNodo  = nuevoNodo;
-	nuevoNodo->siguienteNodo = nuevoNodo;
+	Nodo* nuevoNodo     = new Nodo;
+	nuevoNodo->elemento = nuevoValor;
 
 	if (n == 0)
+	{
+		actual                   = nuevoNodo;
+		nuevoNodo->anteriorNodo  = nuevoNodo;
+		nuevoNodo->siguienteNodo = nuevoNodo;
+	}
+	else
+	{
+		Nodo* nodoPos      = getNodo(pos);
+		Nodo* nodoAnterior = getNodo(pos - 1);
+
+		nodoAnterior->siguienteNodo = nuevoNodo;
+		nodoPos->anteriorNodo       = nuevoNodo;
+
+		nuevoNodo->anteriorNodo  = nodoAnterior;
+		nuevoNodo->siguienteNodo = nodoPos;
+	}
+
+	if (pos == 0)
 	{
 		actual = nuevoNodo;
 	}
@@ -81,10 +110,43 @@ void ListaCircular::insertar(int pos, string nuevoValor)
 /** @brief
  * Elimina el elemento que se encuentra
  * en la posición pos en la lista. */
-// todo
 void ListaCircular::eliminar(int pos)
 {
-	assertdomjudge(pos >= 0 && pos < n);
+	Nodo* aux;
+
+	if (n == 0)
+	{
+		return;
+	}
+	else if (n == 1)
+	{
+		aux    = actual;
+		actual = nullptr;
+		delete aux;
+	}
+	else if (n == 2)
+	{
+		aux    = getNodo(pos);
+		actual = getNodo(pos + 1);
+        actual->siguienteNodo = actual;
+        actual->anteriorNodo = actual;
+		delete aux;
+	}
+	else
+	{
+		Nodo* anterior  = getNodo(pos - 1);
+		Nodo* posterior = getNodo(pos + 1);
+		aux             = getNodo(pos);
+
+		anterior->siguienteNodo = posterior;
+		posterior->anteriorNodo = anterior;
+
+        actual = posterior;
+
+		delete aux;
+	}
+
+	n--;
 }
 
 /** @brief
@@ -96,13 +158,24 @@ void ListaCircular::eliminar(int pos)
  * a la derecha como indique el valor.
  * - Si el valor es negativo el desplazamiento
  * será hacia la izquierda. */
-// todo
-void ListaCircular::girar(int p)
+void ListaCircular::girar(int pos)
 {
+	actual = getNodo(pos);
 }
 
-// todo doing
+// debug
 void ListaCircular::toString()
 {
-	cout << actual->elemento << endl;
+	for (int i = 0; i < n; i++)
+	{
+		if (getNodo(i) == actual)
+		{
+            cout << '[' << getValor(i) << ']' << ' ';
+		}
+		else
+		{
+			cout << getValor(i) << ' ';
+		}
+	}
+	cout << endl;
 }

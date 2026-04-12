@@ -1,6 +1,6 @@
 .PHONY: main run run_test clean
 
-main:
+main: main.cpp Supermercado.cpp Cola.cpp
 	g++ main.cpp Supermercado.cpp Cola.cpp -o main
 
 run: main

@@ -1,14 +1,17 @@
 #include "Cola.h"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 using namespace std;
 
 // clang-format off
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 // clang-format on
 
-// __________________________________________________
-// ______________________________________ Constructor
+// Cola Enlazada Simple
+
+// =========================================================
+// * Constructor
+// =========================================================
 
 /** @brief
  * Constructor sin parámetros de la estructura Cola.
@@ -16,11 +19,13 @@ using namespace std;
  * */
 Cola::Cola()
 {
-
+	principio = nullptr;
+	final     = nullptr;
 }
 
-// __________________________________________________
-// _________________________________ Métodos Públicos
+// =========================================================
+// * Métodos Públicos
+// =========================================================
 
 /** @brief
  * Recibe un num que representará
@@ -29,7 +34,26 @@ Cola::Cola()
  * */
 void Cola::encolar(int num)
 {
+	// clang-format off
+    assertdomjudge((
+        principio == nullptr && final == nullptr) ||
+        principio != nullptr && final != nullptr);
+	// clang-format on
 
+	Nodo* nuevo = new Nodo(num);
+
+	if (principio == nullptr)
+	{
+        // Cola vacía
+		principio = nuevo;
+		final     = nuevo;
+	}
+	else
+	{
+        // Al menos 1 elemento
+		final->siguiente = nuevo;
+		final            = nuevo;
+	}
 }
 
 /** @brief
@@ -38,15 +62,30 @@ void Cola::encolar(int num)
  * que se encuentra en la primera pos de la cola
  * (El primero en llegar).
  * */
+// todo
 int Cola::desencolar()
 {
-    return 0;
+	return 0;
 }
 
 /** @brief
  * Indica si la cola se encuentra vacía.
  * */
+// todo
 bool Cola::estaVacia()
 {
-    return false;
+	return false;
+}
+
+// Debug
+void Cola::toString()
+{
+	Nodo* aux = principio;
+
+	while (aux != nullptr)
+	{
+		cout << aux->valor << ' ';
+		aux = aux->siguiente;
+	}
+	cout << '\n';
 }

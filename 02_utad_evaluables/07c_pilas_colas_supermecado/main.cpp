@@ -17,6 +17,10 @@ using namespace std;
 int main()
 {
 	// Declaración de variables
+    Cola miColita;
+    miColita.encolar(1);
+    miColita.encolar(2);
+    miColita.toString();
 
 	return 0;
 }

@@ -13,10 +13,11 @@ class Supermercado
 	public:
         // Constructor
 		Supermercado(int n);
-        
+
         // Métodos Públicos
 		void nuevoUsuario(int n, int id);
 		void cerrarCaja(int n);
 		int atenderUsuario(int n);
 		bool cajaVacia(int n);
+        void toString();
 };

@@ -42,15 +42,13 @@ void Cola::encolar(int num)
 
 	Nodo* nuevo = new Nodo(num);
 
-	if (principio == nullptr)
+	if (estaVacia())
 	{
-        // Cola vacía
 		principio = nuevo;
 		final     = nuevo;
 	}
 	else
 	{
-        // Al menos 1 elemento
 		final->siguiente = nuevo;
 		final            = nuevo;
 	}
@@ -62,25 +60,46 @@ void Cola::encolar(int num)
  * que se encuentra en la primera pos de la cola
  * (El primero en llegar).
  * */
-// todo
 int Cola::desencolar()
 {
-	return 0;
+	assertdomjudge(!estaVacia());
+
+	Nodo* aux = principio;
+	int valor = principio->valor;
+
+	if (principio == final)
+	{
+		// Solo 1 elemento
+		principio = nullptr;
+		final     = nullptr;
+	}
+	else
+	{
+		// Varios elementos
+		principio = principio->siguiente;
+	}
+    delete aux;
+
+	return valor;
 }
 
 /** @brief
  * Indica si la cola se encuentra vacía.
  * */
-// todo
 bool Cola::estaVacia()
 {
-	return false;
+	return principio == nullptr;
 }
 
 // Debug
 void Cola::toString()
 {
 	Nodo* aux = principio;
+
+	if (estaVacia())
+	{
+		cout << "empty" << '\n';
+	}
 
 	while (aux != nullptr)
 	{

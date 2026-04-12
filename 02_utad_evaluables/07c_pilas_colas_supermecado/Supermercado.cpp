@@ -15,10 +15,10 @@ using namespace std;
  * Se encarga de reservar memoria para las n cajas del super
  * Incializa el atributo n_cajas.
  * */
-// todo
 Supermercado::Supermercado(int n)
 {
-
+    cajas = new Cola[n];
+    n_cajas = n;
 }
 
 // =========================================================
@@ -27,18 +27,19 @@ Supermercado::Supermercado(int n)
 
 /** @brief
  * Encola el usuario con el id indicado en la caja
- * que se encuentra en la posición n del array de cajas.
+ * que se encuentra en la posición pos del array de cajas.
  * */
-// todo
-void Supermercado::nuevoUsuario(int n, int id)
+void Supermercado::nuevoUsuario(int pos, int id)
 {
+    assertdomjudge(pos >= 0 && pos < n_cajas);
 
+    cajas[pos].encolar(id);
 }
 
 /** @brief
  * Esta función simula
- * - el cierre de la caja n
- * - el reparto de los usuarios en las cajas restantes.
+ * - El cierre de la caja pos
+ * - El reparto de los usuarios en las cajas restantes.
  *
  * Para ello será necesario desencolar todos los usuarios
  * que se encuentran en la caja n en el orden de llegada,
@@ -57,27 +58,52 @@ void Supermercado::nuevoUsuario(int n, int id)
  * hasta que no queden más usuarios.
  * */
 // todo
-void Supermercado::cerrarCaja(int n)
+void Supermercado::cerrarCaja(int pos)
 {
-
+    // Repartimos clientes
+    int i = 0;
+    while(!cajas[pos].estaVacia())
+    {
+        if(i != pos)
+        {
+            nuevoUsuario(i, cajas[pos].desencolar());
+        }
+        i++;
+        if(i == n_cajas)
+        {
+            i = 0;
+        }
+    }
 }
 
 /** @brief
- * Atiende al usuario que se encuentra en la caja n
+ * Atiende al usuario que se encuentra en la caja pos
  * y por tanto lo desencola de la cola que representa dicha caja.
  * @return: id del usuario atendido.
  * */
-// todo
-int Supermercado::atenderUsuario(int n)
+int Supermercado::atenderUsuario(int pos)
 {
-    return 0;
+    assertdomjudge(pos >= 0 && pos < n_cajas);
+
+    return cajas[pos].desencolar();
 }
 
 /** @brief
- * Indica si la caja n tiene o no tiene usuarios esperando.
+ * Indica si la caja pos tiene o no tiene usuarios esperando.
  * */
-// todo
-bool Supermercado::cajaVacia(int n)
+bool Supermercado::cajaVacia(int pos)
 {
-    return false;
+    assertdomjudge(pos >= 0 && pos < n_cajas);
+
+    return cajas[pos].estaVacia();
+}
+
+void Supermercado::toString()
+{
+    for(int i = 0; i < n_cajas; i++)
+    {
+        cout << "Caja " << i << '\n';
+        cajas[i].toString();
+        cout << '\n';
+    }
 }

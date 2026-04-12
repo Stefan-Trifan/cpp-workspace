@@ -13,7 +13,10 @@ class Cola
 		Nodo* final;
 
 	public:
+        // Constructor
 		Cola();
+
+        // Métodos Públicos
 		void encolar(int num);
 		int desencolar();
 		bool estaVacia();

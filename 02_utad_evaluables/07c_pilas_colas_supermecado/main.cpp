@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Cola.h"
-#include "Supermercado.h"
+
+// todo al descomentar, borrar cola
+// #include "Supermercado.h"
+
 using namespace std;
 
 // clang-format off

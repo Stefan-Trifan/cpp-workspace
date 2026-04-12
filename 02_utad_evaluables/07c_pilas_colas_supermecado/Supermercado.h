@@ -11,7 +11,10 @@ class Supermercado
 		int n_cajas;
 
 	public:
+        // Constructor
 		Supermercado(int n);
+        
+        // Métodos Públicos
 		void nuevoUsuario(int n, int id);
 		void cerrarCaja(int n);
 		int atenderUsuario(int n);

@@ -3,13 +3,11 @@
 main:
 	g++ main.cpp Supermercado.cpp Cola.cpp -o main
 
-run:
-	g++ main.cpp Supermercado.cpp Cola.cpp -o main
+run: main
 	./main
 
-run_test:
-	g++ main.cpp Supermercado.cpp Cola.cpp -o main
+run_test: main
 	./main < 1.in
 
 clean:
-	rm -rf clean
+	rm -rf main

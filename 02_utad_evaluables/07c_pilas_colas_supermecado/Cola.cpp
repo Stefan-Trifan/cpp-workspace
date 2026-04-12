@@ -1,5 +1,14 @@
 #include "Cola.h"
+#include <iostream>
+#include <cstdlib>
 using namespace std;
+
+// clang-format off
+#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
+// clang-format on
+
+// __________________________________________________
+// ______________________________________ Constructor
 
 /** @brief
  * Constructor sin parámetros de la estructura Cola.
@@ -9,6 +18,9 @@ Cola::Cola()
 {
 
 }
+
+// __________________________________________________
+// _________________________________ Métodos Públicos
 
 /** @brief
  * Recibe un num que representará
@@ -28,7 +40,7 @@ void Cola::encolar(int num)
  * */
 int Cola::desencolar()
 {
-
+    return 0;
 }
 
 /** @brief
@@ -36,6 +48,5 @@ int Cola::desencolar()
  * */
 bool Cola::estaVacia()
 {
-
-
+    return false;
 }

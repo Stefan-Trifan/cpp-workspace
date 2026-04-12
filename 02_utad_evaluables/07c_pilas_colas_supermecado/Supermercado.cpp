@@ -7,6 +7,9 @@ using namespace std;
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 // clang-format on
 
+// __________________________________________________
+// ______________________________________ Constructor
+
 /** @brief
  * Se encarga de reservar memoria para las n cajas del super
  * Incializa el atributo n_cajas.
@@ -15,6 +18,9 @@ Supermercado::Supermercado(int n)
 {
 
 }
+
+// __________________________________________________
+// _________________________________ Métodos Públicos
 
 /** @brief
  * Encola el usuario con el id indicado en la caja
@@ -55,7 +61,7 @@ void Supermercado::cerrarCaja(int n)
  * */
 int Supermercado::atenderUsuario(int n)
 {
-
+    return 0;
 }
 
 /** @brief
@@ -63,5 +69,5 @@ int Supermercado::atenderUsuario(int n)
  * */
 bool Supermercado::cajaVacia(int n)
 {
-
+    return false;
 }

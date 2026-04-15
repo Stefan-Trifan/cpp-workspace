@@ -9,6 +9,7 @@
    Inicio cabecera */
 
 #include <iostream>
+
 using namespace std;
 // clang-format off
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
@@ -23,8 +24,12 @@ using namespace std;
 
 int main()
 {
-	// Declaración de variables
+    cout << "\n_________________________________________START\n\n";
 
+	// Declaración de variables
+    
+
+    cout << "\n_________________________________________EXIT\n\n";
 	return 0;
 }
 

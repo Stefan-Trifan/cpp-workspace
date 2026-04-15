@@ -9,7 +9,7 @@ run:
 
 run_test:
 	g++ mainAgenda.cpp Agenda.cpp -o main
-	./main < 2.in
+	./main < 4.in
 
 clean:
 	rm -f main

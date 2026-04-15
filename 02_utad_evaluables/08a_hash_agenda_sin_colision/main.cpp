@@ -24,15 +24,20 @@ using namespace std;
 
 int main()
 {
+    cout << "\n_________________________________________START\n\n";
+
 	// Declaración de variables
-	int capacidad = 5;
-	long telefono; // Clave para algunas opciones
-	string nombre; // Nombre del contacto para la opcion de meter
+    int capacidad = 10;
+    Agenda miAgenda(capacidad);
+
+    miAgenda.introducirContacto(10, "Pepe");
+    // miAgenda.introducirContacto(100, "Juan");
+
+    miAgenda.imprimir();
 
 
 
-	Agenda agenda(capacidad);
-
+    cout << "\n_________________________________________EXIT\n\n";
 	return 0;
 }
 

@@ -8,11 +8,12 @@
 /* _________________________________________
    Inicio cabecera */
 
+#include "Agenda.h"
+#include "assertdomjudge.h"
 #include <iostream>
+#include <string>
+
 using namespace std;
-// clang-format off
-#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
-// clang-format on
 
 // Funciones del programa
 
@@ -24,6 +25,13 @@ using namespace std;
 int main()
 {
 	// Declaración de variables
+	int capacidad = 5;
+	long telefono; // Clave para algunas opciones
+	string nombre; // Nombre del contacto para la opcion de meter
+
+
+
+	Agenda agenda(capacidad);
 
 	return 0;
 }

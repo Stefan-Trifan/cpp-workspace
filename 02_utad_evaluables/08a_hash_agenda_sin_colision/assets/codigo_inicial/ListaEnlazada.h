@@ -1,92 +1,100 @@
 #pragma once
 #include "Nodo.h"
 
-// Clase que representa a una lista enlazada simple. No tiene restricciÃ³n de tamaÃ±o
+// Clase que representa a una lista enlazada simple. No tiene restricción de tamaño
 // Se trata de una lista enlazada de nodos, en donde cada nodo tiene un elemento (un int), y un puntero al siguiente nodo
 class ListaEnlazada
 {
-		// Puntero que apuntarÃ¡ al primer nodo de la lista, o serÃ¡ NULL si la lista estÃ¡ vacÃ­a
-		Nodo* lista;
+	// Puntero que apuntará al primer nodo de la lista, o será NULL si la lista está vacía
+	Nodo *lista;
 
-		// Numero actual de elementos que tiene la lista
-		// PrecondiciÃ³n: n>=0
-		int n;
+	// Numero actual de elementos que tiene la lista
+	// Precondición: n>=0
+	int n;
 
-		// PosiciÃ³n y puntero del nodo que devolviÃ³ la Ãºltima llamada a getNodo()
-		int posicionUltimoNodoAccedido;
-		Nodo* punteroUltimoNodoAccedido;
+	// Posición y puntero del nodo que devolvió la última llamada a getNodo()
+	int posicionUltimoNodoAccedido;
+	Nodo *punteroUltimoNodoAccedido;
 
-		// Obtiene un nodo de la lista
-		// ParÃ¡metro: la posiciÃ³n del nodo
-		// Retorno: un puntero al nodo que estÃ¡ en dicha posiciÃ³n
-		// Precondiciones:
-		// - la posiciÃ³n debe estar en el intervalo [0, n-1]
-		// - La lista no esta vacia (n>0)
-		// Complejidad temporal: O(n). Como mÃ¡ximo hace n/2 iteraciones porque decide si ir hacia delante o hacia atrÃ¡s
-		// Complejidad espacial: O(1)
-		Nodo* getNodo(int posicion);
+	// Obtiene un nodo de la lista
+	// Parámetro: la posición del nodo
+	// Retorno: un puntero al nodo que está en dicha posición
+	// Precondiciones: 
+	// - la posición debe estar en el intervalo [0, n-1]
+	// - La lista no esta vacia (n>0)
+	// Complejidad temporal: O(n). Como máximo hace n/2 iteraciones porque decide si ir hacia delante o hacia atrás
+	// Complejidad espacial: O(1)
+	Nodo * getNodo (int posicion);
 
-	public:
-		// Constructor. Crea una lista de tamaÃ±o 0
-		// Complejidad temporal y espacial: O(1)
-		ListaEnlazada();
+public:
 
-		// Devuelve un elemento de la lista en determinada posiciÃ³n
-		// ParÃ¡metro: la posiciÃ³n del elemento
-		// Retorno: una copia del elemento encontrado en esa posiciÃ³n
-		// Precondiciones: posicion en [0, n-1] y n>0
-		// Complejidad temporal: O(n)
-		// Complejidad espacial: O(1)
-		Contacto getValor(int posicion);
+	// Constructor. Crea una lista de tamaño 0
+	// Complejidad temporal y espacial: O(1)
+	ListaEnlazada();
 
-		// Modifica un elemento de la lista
-		// ParÃ¡metros:
-		// - posicion: la posiciÃ³n del elemento que queremos modificar
-		// - nuevoValor: el nuevo valor del elemento
-		// Precondiciones: posicion en [0, n-1] y n>0
-		// Complejidad temporal: O(n)
-		// Complejidad espacial: O(1)
-		void setValor(int posicion, Contacto nuevoValor);
+	// Devuelve un elemento de la lista en determinada posición
+	// Parámetro: la posición del elemento
+	// Retorno: una copia del elemento encontrado en esa posición
+	// Precondiciones: posicion en [0, n-1] y n>0
+	// Complejidad temporal: O(n)
+	// Complejidad espacial: O(1)
+	Contacto getValor(int posicion);
 
-		// Devuelve el tamaÃ±o actual de la lista
-		// Complejidad temporal y espacial: O(1)
-		int getN();
+	// Modifica un elemento de la lista
+	// Parámetros:
+	// - posicion: la posición del elemento que queremos modificar
+	// - nuevoValor: el nuevo valor del elemento
+	// Precondiciones: posicion en [0, n-1] y n>0
+	// Complejidad temporal: O(n)
+	// Complejidad espacial: O(1)
+	void setValor(int posicion, Contacto nuevoValor);
 
-		// Inserta un nuevo elemento en una posiciÃ³n de la lista
-		// Los elementos que habÃ­a desde la posiciÃ³n hasta el final de la lista se desplazarÃ¡n una posiciÃ³n a la derecha
-		// ParÃ¡metros:
-		// - posiciÃ³n: la posiciÃ³n en donde queremos poner el nuevo elemento. Si es 0 se inserta al principio, si es n se inserta al final
-		// - nuevoValor: el nuevo elemento que queremos poner
-		// Precondiciones: posicion en [0, n]
-		// Complejidad temporal: O(n)
-		// Complejidad espacial: O(1)
-		void insertar(int posicion, Contacto nuevoValor);
+	// Devuelve el tamaño actual de la lista
+	// Complejidad temporal y espacial: O(1)
+	int getN(); 
 
-		// Elimina un elemento en una posiciÃ³n dada.
-		// Los elementos que habÃ­a desde posicion+1 hasta el final de la lista se desplazarÃ¡n una posiciÃ³n a la izquierda
-		// ParÃ¡metros:
-		// - posicion: la posiciÃ³n del elemento que queremos borrar. Si es 0 se elimina el primero y si es n-1 se elimina el Ãºltimo
-		// Precondiciones: posicion en [0, n-1] y n>0
-		// Complejidad temporal: O(n)
-		// Complejidad espacial: O(1)
-		void eliminar(int posicion);
+	// Inserta un nuevo elemento en una posición de la lista
+	// Los elementos que había desde la posición hasta el final de la lista se desplazarán una posición a la derecha
+	// Parámetros:
+	// - posición: la posición en donde queremos poner el nuevo elemento. Si es 0 se inserta al principio, si es n se inserta al final
+	// - nuevoValor: el nuevo elemento que queremos poner
+	// Precondiciones: posicion en [0, n]
+	// Complejidad temporal: O(n)
+	// Complejidad espacial: O(1)
+	void insertar (int posicion, Contacto nuevoValor);
 
-		// Concatena una lista al final de la lista actual
-		// Cada uno de los elementos de la lista a concatenar se copian, en orden, al final de la lista actual
-		// ParÃ¡metro: puntero a la lista cuyos elementos queremos concatenar al final de nuestra lista
-		// PrecondiciÃ³n: listaAConcatenar!=NULL
-		// Complejidad temporal: O(capacidad), siendo capacidad = listaAConcatenar.getN()
-		// Complejidad espacial: O(capacidad), siendo capacidad = listaAConcatenar.getN()
-		void concatenar(ListaEnlazada* listaAConcatenar);
+	// Elimina un elemento en una posición dada.
+	// Los elementos que había desde posicion+1 hasta el final de la lista se desplazarán una posición a la izquierda
+	// Parámetros:
+	// - posicion: la posición del elemento que queremos borrar. Si es 0 se elimina el primero y si es n-1 se elimina el último
+	// Precondiciones: posicion en [0, n-1] y n>0
+	// Complejidad temporal: O(n)
+	// Complejidad espacial: O(1)
+	void eliminar (int posicion);
 
-		// Busca la posiciÃ³n de un elemento en la ListaContigua
-		// ParÃ¡metro: el elemento a buscar
-		// Retorno: posiciÃ³n del elemento (de 0 a n-1) si se encuentra, o -1 en caso contrario
-		// Complejidad temporal: O(n)
-		// Complejidad espacial: O(1)
-		int buscar(Contacto elementoABuscar);
+	// Concatena una lista al final de la lista actual
+	// Cada uno de los elementos de la lista a concatenar se copian, en orden, al final de la lista actual
+	// Parámetro: puntero a la lista cuyos elementos queremos concatenar al final de nuestra lista
+	// Precondición: listaAConcatenar!=NULL
+	// Complejidad temporal: O(capacidad), siendo capacidad = listaAConcatenar.getN()
+	// Complejidad espacial: O(capacidad), siendo capacidad = listaAConcatenar.getN()
+	void concatenar(ListaEnlazada *listaAConcatenar);
 
-		// Destructor. Libera memoria
-		// Complejidad temporal: O(n)
-		~ListaEnlazada();
+	// Busca la posición de un elemento en la ListaContigua
+	// Parámetro: el elemento a buscar
+	// Retorno: posición del elemento (de 0 a n-1) si se encuentra, o -1 en caso contrario
+	// Complejidad temporal: O(n)
+	// Complejidad espacial: O(1)
+	int buscar(Contacto elementoABuscar);
+
+	// Destructor. Libera memoria
+	// Complejidad temporal: O(n)
+	~ListaEnlazada();
 };
+
+
+
+
+
+
+

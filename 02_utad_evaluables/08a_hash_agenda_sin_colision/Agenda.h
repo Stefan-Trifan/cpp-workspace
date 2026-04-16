@@ -8,7 +8,7 @@ class Agenda
 		/** capacidad
 		 * Num max de contactos que se pueden almacenar
 		 * en la tabla hash.
-         * */
+        * */
         /** nombres
          * Puntero a un array de string
          * que permitirá almacenar los nombres de los contactos.

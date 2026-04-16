@@ -9,28 +9,40 @@
    Inicio cabecera */
 
 #include <iostream>
+#include "assertdomjudge.h"
+#include "Agenda.h"
+
 using namespace std;
-// clang-format off
-#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
-// clang-format on
-
-// Funciones del programa
-
-// Funciones auxiliares
 
 /* _________________________________________
    Inicio main() */
 
 int main()
 {
-	// Declaración de variables
+	cout << "\n_________________________________________START\n\n";
 
+	// Declaración de variables
+    Agenda miAgenda(10);
+
+    miAgenda.nombres[1] = "Steve";
+    miAgenda.telefonos[1] = 1;
+    miAgenda.vacias[1] = false;
+    miAgenda.n++;
+
+    miAgenda.nombres[2] = "Mate";
+    miAgenda.telefonos[2] = 2;
+    miAgenda.vacias[2] = false;
+    miAgenda.n++;
+
+    miAgenda.nombres[9] = "Val";
+    miAgenda.telefonos[9] = 1;
+    miAgenda.vacias[9] = false;
+    miAgenda.n++;
+
+    miAgenda.imprimir();
+
+    cout << miAgenda.buscarHueco(3) << '\n';
+
+	cout << "\n_________________________________________EXIT\n\n";
 	return 0;
 }
-
-/* _________________________________________
-   Inicio definicion de funciones */
-
-// Funciones del programa
-
-// Funciones auxiliares

@@ -1,3 +1,7 @@
+#include <string>
+
+using namespace std;
+
 class Agenda
 {
 	private:
@@ -19,7 +23,9 @@ class Agenda
 
 		int capacidad;
 		int n;
-		ListaEnlazada* tabla;
+
+        // todo
+		// ListaEnlazada* tabla;
 
 	public:
 		Agenda(int capacidad);
@@ -30,4 +36,4 @@ class Agenda
 		void introducirContacto(long telefono, string contacto);
 		void eliminarContacto(long telefono);
 		void imprimir();
-}
+};

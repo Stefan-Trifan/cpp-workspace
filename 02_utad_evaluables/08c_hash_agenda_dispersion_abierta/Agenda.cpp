@@ -1,8 +1,12 @@
 #include "Agenda.h"
-#include "ListaEnlazada.h"
 #include "assertdomjudge.h"
-#include "impresionListasEnlazadas.h" // Para el método imprimir de la tabla hash
+#include <string>
 #include <iostream>
+
+// todo #include "ListaEnlazada.h"
+
+// Para el método imprimir de la tabla hash
+// #include "impresionListasEnlazadas.h"
 
 using namespace std;
 
@@ -11,7 +15,6 @@ using namespace std;
  * - Reservará [capacidad] listas para la tabla hash. */
 Agenda::Agenda(int capacidad)
 {
-
 }
 
 /** @brief
@@ -21,7 +24,6 @@ Agenda::Agenda(int capacidad)
  * para almacenar toda la tabla hash. */
 Agenda::~Agenda()
 {
-
 }
 
 /** @brief
@@ -32,7 +34,7 @@ Agenda::~Agenda()
  * - La función hash estará basada en el resto de la división entre la capacidad. */
 int Agenda::obtenerPosicion(long telefono)
 {
-
+	return 0;
 }
 
 /** @brief
@@ -40,7 +42,7 @@ int Agenda::obtenerPosicion(long telefono)
  * está almacenado o no en la tabla hash. */
 bool Agenda::existeContacto(long telefono)
 {
-
+	return false;
 }
 
 /** @brief
@@ -48,7 +50,7 @@ bool Agenda::existeContacto(long telefono)
  * que tiene el teléfono indicado. */
 string Agenda::getContacto(long telefono)
 {
-
+	return "";
 }
 
 /** @brief
@@ -56,7 +58,6 @@ string Agenda::getContacto(long telefono)
  * lista que se encuentra en la posición correspondiente. */
 void Agenda::introducirContacto(long telefono, string contacto)
 {
-
 }
 
 /** @brief
@@ -64,7 +65,6 @@ void Agenda::introducirContacto(long telefono, string contacto)
  * indicado de la tabla hash. */
 void Agenda::eliminarContacto(long telefono)
 {
-
 }
 
 /** @brief
@@ -75,18 +75,10 @@ void Agenda::eliminarContacto(long telefono)
  * ser implementada por el alumno. */
 void Agenda::imprimir()
 {
-
-}
-
-
-void Agenda::imprimir()
-{
-	for (int i = 0; i < capacidad
-        {
-
-        } i++)
+	for (int i = 0; i < capacidad; i++)
 	{
 		cout << "Posicion " << i << ": ";
-		imprimirListaEnlazada(&tabla[i]);
+        // todo
+		// imprimirListaEnlazada(&tabla[i]);
 	}
 }

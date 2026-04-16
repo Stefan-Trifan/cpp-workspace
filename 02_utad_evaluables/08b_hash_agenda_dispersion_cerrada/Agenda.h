@@ -1,10 +1,9 @@
 #include <string>
 
-using namespace std;
-
 class Agenda
 {
-	private:
+    // todo cambiar a private
+	public:
 		/**
          * * [capacidad]
 		 * - Num max de contactos
@@ -35,12 +34,12 @@ class Agenda
          * que posiciones de la tabla hash han sido borradas.
          * Este array tendrá [capacidad] elementos. */
 
+        std::string* nombres;
+        long* telefonos;
+        bool* borradas;
+        bool* vacias;
         int capacidad;
         int n;
-        string* nombres;
-        long* telefonos;
-        bool* vacias;
-        bool* borradas;
 
 	public:
 		// _____________________ Constructores
@@ -48,10 +47,10 @@ class Agenda
 		~Agenda();
 
 		// _____________________ Getter
-		string getContacto(long telefono);
+		std::string getContacto(long telefono);
 
 		// _____________________ Métodos públicos
-		void introducirContacto(long telefono, string contacto);
+		void introducirContacto(long telefono, std::string contacto);
 		int obtenerPosicion(long telefono);
         int buscarContacto (long telefono);
         int buscarHueco (long telefono);
@@ -59,4 +58,5 @@ class Agenda
 		bool existeContacto(long telefono);
 		void eliminarContacto(long telefono);
 		void imprimir();
+		void toString();
 };

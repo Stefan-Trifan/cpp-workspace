@@ -35,13 +35,15 @@ int main()
     miAgenda.n++;
 
     miAgenda.nombres[9] = "Val";
-    miAgenda.telefonos[9] = 1;
+    miAgenda.telefonos[9] = 9;
     miAgenda.vacias[9] = false;
     miAgenda.n++;
 
-    miAgenda.imprimir();
+    miAgenda.toString();
 
-    cout << miAgenda.buscarHueco(3) << '\n';
+    cout << "\n\n" << '\n';
+
+    cout << miAgenda.buscarContacto(8) << '\n';
 
 	cout << "\n_________________________________________EXIT\n\n";
 	return 0;

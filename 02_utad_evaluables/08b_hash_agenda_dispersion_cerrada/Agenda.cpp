@@ -51,9 +51,9 @@ string Agenda::getContacto(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-    // ! buscarElemento
+	// ! buscarElemento
 
-    // Devolver contacto
+	// Devolver contacto
 
 	return "";
 }
@@ -67,11 +67,11 @@ string Agenda::getContacto(long telefono)
 void Agenda::introducirContacto(long telefono, string contacto)
 {
 	assertdomjudge(telefono > 0 && contacto != "");
-    // ! assert(!existeContacto)
+	// ! assert(!existeContacto)
 
 	// ! buscarHueco(telefono)
 
-    // Introducimos en el hueco
+	// Introducimos en el hueco
 
 	n++;
 }
@@ -87,7 +87,7 @@ int Agenda::obtenerPosicion(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-    // Devuelve el hash
+	// Devuelve el hash
 	return telefono % capacidad;
 }
 
@@ -106,23 +106,48 @@ int Agenda::obtenerPosicion(long telefono)
  *      - la posición donde se encuentra
  *      - (-1) en caso de no encontrarse.
  * */
-// todo
+// clang-format off
 int Agenda::buscarContacto(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-    int hash = obtenerPosicion(telefono);
+	int hash = obtenerPosicion(telefono);
+	int pos  = hash;
 
-    // Buscar elemento con la clave
-        /**
-         * Si la clave que buscamos no está ahí,
-         * iremos avanzando al igual que para insertar…
-         * pero en vez de parar en la primera casilla vacía, pararemos en la primera casilla vacía no borrada.
-         * Es decir, las casillas borradas y vacías nos las saltaremos y seguiremos buscando
-         */
+	// Buscar elemento con la clave
+	/**
+	 * Si la clave que buscamos no está ahí,
+	 * iremos avanzando al igual que para insertar…
+	 * pero en vez de parar en la primera casilla vacía, pararemos en la primera casilla vacía no borrada.
+	 * Es decir, las casillas borradas y vacías nos las saltaremos y seguiremos buscando
+	 */
 
-	return 0;
+    int i = 0;
+
+    do
+    {
+        // Elemento encontrado (No vacio y no borrado)
+        if
+        (
+            telefonos[pos] == telefono &&
+            vacias[pos]    == false    &&
+            borradas[pos]  == false
+        )
+        return pos;
+
+        // Siguiente posicion
+		pos++;
+		if (pos == capacidad) pos = 0;
+        i++;
+
+        // Si encontramos una casilla vacia real, paramos
+        if(vacias[pos] == true && borradas[pos] == false) break;
+    }
+    while(i < capacidad); // Repetimos [capacidad] veces
+
+	return -1;
 }
+// clang-format on
 
 /** @brief
  * - Este método busca el hueco adecuado
@@ -131,33 +156,24 @@ int Agenda::buscarContacto(long telefono)
  * y sigue buscando secuencialmente (exploración lineal)
  * mientras haya colisión.
  * */
-// todo
 int Agenda::buscarHueco(long telefono)
 {
-	assertdomjudge(telefono > 0);
+	assertdomjudge(telefono > 0 && !isLlena());
 
-    int hash = obtenerPosicion(telefono);
+	int hash = obtenerPosicion(telefono);
 
-    if(vacias[hash] != true)
-    {
-        int posInicial = hash;
-        do
-        {
-            hash++;
+	if (vacias[hash] != true)
+	{
+		do
+		{
+			hash++;
 
-            if(hash == capacidad)
-            {
-                hash = 0;
-            }
-
-            // No hay hueco disponible
-            assertdomjudge(hash == posInicial);
-        }
-        while (vacias[hash] == false);
-    }
-    // Si la pos hash no esta vacia
-        // int pos = hash
-        // Avanzamos hasta que encontremos vacia
+			if (hash == capacidad)
+			{
+				hash = 0;
+			}
+		} while (vacias[hash] == false);
+	}
 
 	return hash;
 }
@@ -165,16 +181,15 @@ int Agenda::buscarHueco(long telefono)
 /** @brief
  * - Indica si la tabla hash ha alcanzado su máxima capacidad.
  * */
-// todo
 bool Agenda::isLlena()
 {
-    for(int i = 0; i < capacidad; i++)
-    {
-        if(vacias[i])
-        {
-            return false;
-        }
-    }
+	for (int i = 0; i < capacidad; i++)
+	{
+		if (vacias[i])
+		{
+			return false;
+		}
+	}
 
 	return true;
 }
@@ -188,9 +203,9 @@ bool Agenda::existeContacto(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-    // ! buscarContacto(telefono)
-        // return 1 si lo encuentra
-        // return -1 si no lo encuentra
+	// ! buscarContacto(telefono)
+	// return 1 si lo encuentra
+	// return -1 si no lo encuentra
 
 	return false;
 }
@@ -202,13 +217,13 @@ bool Agenda::existeContacto(long telefono)
 void Agenda::eliminarContacto(long telefono)
 {
 	assertdomjudge(telefono > 0);
-    // ! assert(existe)
+	// ! assert(existe)
 
-    // ! buscarElemento
+	// ! buscarElemento
 
-    // Eliminar el Elemento
-    // Marcar casilla borrada
-    // Marcar casilla vacía
+	// Eliminar el Elemento
+	// Marcar casilla borrada
+	// Marcar casilla vacía
 }
 
 /** @brief
@@ -217,13 +232,12 @@ void Agenda::eliminarContacto(long telefono)
  * entre interfaz y modelo es necesario para el corrector.
  * - Esta función no deberá ser implementada por el alumno.
  * */
-// todo
 // clang-format off
 void Agenda::imprimir()
 {
 	for (int i = 0; i < capacidad; i++)
 	{
-        // todo hemos puesto exclamacion en "!vacias[i]"
+        // ! hemos puesto exclamacion en "!vacias[i]"
 		cout << "Posicion " << i
           << " | Ocupada: " << !vacias[i]
           << " | Telefono: " << telefonos[i]
@@ -238,10 +252,12 @@ void Agenda::toString()
 {
 	for (int i = 0; i < capacidad; i++)
 	{
-		cout << "Posicion " << i
-          << " | Ocupada: " << !vacias[i]
-          << " | Telefono: " << telefonos[i]
-          << " | Nombre: " << nombres[i]
+		cout
+          << i
+          << " | Borrado: " << borradas[i]
+          << " | Vacia: " << vacias[i]
+          << " | Tel: " << telefonos[i]
+          << " | Name: " << nombres[i]
           << endl;
 	}
 }

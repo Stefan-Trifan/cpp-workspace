@@ -48,7 +48,7 @@ Agenda::~Agenda()
  * */
 string Agenda::getContacto(long telefono)
 {
-	assertdomjudge(telefono > 0 && existeContacto(telefono));
+	assertdomjudge(telefono >= 0 && existeContacto(telefono));
 
 	return nombres[buscarContacto(telefono)];
 }
@@ -60,7 +60,7 @@ string Agenda::getContacto(long telefono)
  * */
 void Agenda::introducirContacto(long telefono, string contacto)
 {
-	assertdomjudge(telefono > 0 && !existeContacto(telefono));
+	assertdomjudge(telefono >= 0 && !existeContacto(telefono));
 
 	int pos = buscarHueco(telefono);
 
@@ -81,7 +81,7 @@ void Agenda::introducirContacto(long telefono, string contacto)
  * */
 int Agenda::obtenerPosicion(long telefono)
 {
-	assertdomjudge(telefono > 0);
+	assertdomjudge(telefono >= 0);
 
 	return telefono % capacidad; // Devuelve el hash
 }
@@ -104,7 +104,7 @@ int Agenda::obtenerPosicion(long telefono)
 // clang-format off
 int Agenda::buscarContacto(long telefono)
 {
-	assertdomjudge(telefono > 0);
+	assertdomjudge(telefono >= 0);
 
 	int hash = obtenerPosicion(telefono);
 	int pos  = hash;
@@ -153,7 +153,7 @@ int Agenda::buscarContacto(long telefono)
  * */
 int Agenda::buscarHueco(long telefono)
 {
-	assertdomjudge(telefono > 0 && !isLlena());
+	assertdomjudge(telefono >= 0 && !isLlena());
 
 	int hash = obtenerPosicion(telefono);
 
@@ -191,7 +191,7 @@ bool Agenda::isLlena()
  * */
 bool Agenda::existeContacto(long telefono)
 {
-	assertdomjudge(telefono > 0);
+	assertdomjudge(telefono >= 0);
 
 	return buscarContacto(telefono) >= 0;
 }
@@ -201,7 +201,7 @@ bool Agenda::existeContacto(long telefono)
  * */
 void Agenda::eliminarContacto(long telefono)
 {
-	assertdomjudge(telefono > 0 && existeContacto(telefono));
+	assertdomjudge(telefono >= 0 && existeContacto(telefono));
 
 	int pos = buscarContacto(telefono);
 
@@ -221,9 +221,9 @@ void Agenda::imprimir()
 {
 	for (int i = 0; i < capacidad; i++)
 	{
-        // ! hemos puesto exclamacion en "!vacias[i]"
 		cout << "Posicion " << i
-          << " | Ocupada: " << vacias[i]
+          << " | Vacia: "   << vacias[i]
+          << " | Borrada: " << borradas[i]
           << " | Telefono: " << telefonos[i]
           << " | Nombre: " << nombres[i]
           << endl;

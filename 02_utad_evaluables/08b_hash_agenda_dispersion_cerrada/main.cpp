@@ -24,26 +24,14 @@ int main()
 	// Declaración de variables
     Agenda miAgenda(10);
 
-    miAgenda.nombres[1] = "Steve";
-    miAgenda.telefonos[1] = 1;
-    miAgenda.vacias[1] = false;
-    miAgenda.n++;
+    miAgenda.introducirContacto(10, "pepa");
+    miAgenda.introducirContacto(100, "pepa");
+    miAgenda.introducirContacto(1000, "pepa");
+    miAgenda.introducirContacto(20, "pepa");
+    miAgenda.introducirContacto(200, "pepa");
+    miAgenda.introducirContacto(2000, "pepaa");
 
-    miAgenda.nombres[2] = "Mate";
-    miAgenda.telefonos[2] = 2;
-    miAgenda.vacias[2] = false;
-    miAgenda.n++;
-
-    miAgenda.nombres[9] = "Val";
-    miAgenda.telefonos[9] = 9;
-    miAgenda.vacias[9] = false;
-    miAgenda.n++;
-
-    miAgenda.toString();
-
-    cout << "\n\n" << '\n';
-
-    cout << miAgenda.buscarContacto(8) << '\n';
+    cout << miAgenda.getContacto(2000) << '\n';
 
 	cout << "\n_________________________________________EXIT\n\n";
 	return 0;

@@ -46,16 +46,11 @@ Agenda::~Agenda()
  * - Devuelve el nombre del contacto
  * que tiene el teléfono indicado.
  * */
-// todo
 string Agenda::getContacto(long telefono)
 {
-	assertdomjudge(telefono > 0);
+	assertdomjudge(telefono > 0 && existeContacto(telefono));
 
-	// ! buscarElemento
-
-	// Devolver contacto
-
-	return "";
+	return nombres[buscarContacto(telefono)];
 }
 
 // _________________________________________ Métodos públicos
@@ -63,15 +58,16 @@ string Agenda::getContacto(long telefono)
  * - Introduce un contacto nuevo en la tabla hash
  * en su posición correspondiente.
  * */
-// todo
 void Agenda::introducirContacto(long telefono, string contacto)
 {
-	assertdomjudge(telefono > 0 && contacto != "");
-	// ! assert(!existeContacto)
+	assertdomjudge(telefono > 0 && !existeContacto(telefono));
 
-	// ! buscarHueco(telefono)
+	int pos = buscarHueco(telefono);
 
-	// Introducimos en el hueco
+	nombres[pos]   = contacto;
+	telefonos[pos] = telefono;
+	vacias[pos]    = false;
+	borradas[pos]  = false;
 
 	n++;
 }
@@ -87,8 +83,7 @@ int Agenda::obtenerPosicion(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-	// Devuelve el hash
-	return telefono % capacidad;
+	return telefono % capacidad; // Devuelve el hash
 }
 
 /** @brief
@@ -185,12 +180,8 @@ bool Agenda::isLlena()
 {
 	for (int i = 0; i < capacidad; i++)
 	{
-		if (vacias[i])
-		{
-			return false;
-		}
+		if (vacias[i]) return false;
 	}
-
 	return true;
 }
 
@@ -198,32 +189,25 @@ bool Agenda::isLlena()
  * - Devuelve si el contacto con el teléfono indicado
  * está almacenado o no en la tabla hash.
  * */
-// todo
 bool Agenda::existeContacto(long telefono)
 {
 	assertdomjudge(telefono > 0);
 
-	// ! buscarContacto(telefono)
-	// return 1 si lo encuentra
-	// return -1 si no lo encuentra
-
-	return false;
+	return buscarContacto(telefono) >= 0;
 }
 
 /** @brief
  * - Elimina el contacto con el teléfono indicado de la tabla hash.
  * */
-// todo
 void Agenda::eliminarContacto(long telefono)
 {
-	assertdomjudge(telefono > 0);
-	// ! assert(existe)
+	assertdomjudge(telefono > 0 && existeContacto(telefono));
 
-	// ! buscarElemento
+	int pos = buscarContacto(telefono);
 
-	// Eliminar el Elemento
-	// Marcar casilla borrada
-	// Marcar casilla vacía
+	borradas[pos] = true;
+	vacias[pos] = true;
+    n--;
 }
 
 /** @brief
@@ -239,7 +223,7 @@ void Agenda::imprimir()
 	{
         // ! hemos puesto exclamacion en "!vacias[i]"
 		cout << "Posicion " << i
-          << " | Ocupada: " << !vacias[i]
+          << " | Ocupada: " << vacias[i]
           << " | Telefono: " << telefonos[i]
           << " | Nombre: " << nombres[i]
           << endl;

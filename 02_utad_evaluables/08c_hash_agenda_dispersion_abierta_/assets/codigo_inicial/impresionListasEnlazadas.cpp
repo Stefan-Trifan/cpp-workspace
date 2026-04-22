@@ -1,20 +1,18 @@
 #include "impresionListasEnlazadas.h"
 #include "assertdomjudge.h"
 #include <iostream>
-
-
 using namespace std;
 
 void imprimirListaEnlazada(ListaEnlazada *lista) {
 	assertdomjudge(lista != NULL);
 
-	// Imprimimos tamaï¿½o
+	// Imprimimos tamaño
 	cout << "n=" << lista->getN() << "|ListaEnlazada=";
 
-	// Si la lista estï¿½ vacï¿½a, imprimimos algo especial
+	// Si la lista está vacía, imprimimos algo especial
 	if (lista->getN() == 0) cout << "vacia";
 
-	// Si no estï¿½ vacï¿½a, imprimimos los elementos separados por comas, siempre que no sea demasiado grande
+	// Si no está vacía, imprimimos los elementos separados por comas, siempre que no sea demasiado grande
 	// Si es demasiado grande, imprimimos un mensaje especial
 	else {
 		if (lista->getN() > 20) cout << "demasiadosElementosParaMostrar";

@@ -1,14 +1,15 @@
-TARGET = main
-CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+.PHONY: main run clean run_test
 
-$(TARGET): main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp -o $(TARGET)
+main:
+	g++ main.cpp -o main
 
-run: $(TARGET)
-	./$(TARGET)
+run:
+	g++ main.cpp -o main
+	./main
+
+run_test:
+	g++ main.cpp -o main
+	./main < 1.in
 
 clean:
-	rm -f $(TARGET)
-
-.PHONY: run clean
+	rm -f main

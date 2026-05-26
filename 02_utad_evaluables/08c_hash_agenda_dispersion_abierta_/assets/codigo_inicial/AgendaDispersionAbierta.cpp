@@ -2,7 +2,7 @@
 #include "ListaEnlazada.h"
 #include "assertdomjudge.h"
 #include <iostream>
-#include "impresionListasEnlazadas.h" // Para el método imprimir de la tabla hash
+#include "impresionListasEnlazadas.h" // Para el mï¿½todo imprimir de la tabla hash
 
 using namespace std;
 

@@ -2,8 +2,7 @@
 
 class Agenda
 {
-    // todo cambiar a private
-	public:
+	private:
 		/**
          * * [capacidad]
 		 * - Num max de contactos

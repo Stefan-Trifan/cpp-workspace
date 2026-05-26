@@ -1,5 +1,7 @@
+// Blackboard
+
 #include <iostream>
-#include<string>
+#include <string>
 #include "Agenda.h"
 
 
@@ -25,7 +27,7 @@ int main() {
 
 		switch (opcion) {
 		case 'I':
-			agenda.imprimir();
+			// agenda.imprimir(); // todo depende de ListaEnlazada.cpp
 			break;
 		case 'C':
 			// Comprobar si est� un contacto

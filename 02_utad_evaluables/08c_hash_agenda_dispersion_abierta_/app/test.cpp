@@ -1,15 +1,14 @@
-/*
-    Stefan Trifan
-
-    #if 0
-    #en
-*/
+// Steve
 
 /* _________________________________________
    Inicio cabecera */
 
 #include <iostream>
+
 using namespace std;
+// clang-format off
+#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
+// clang-format on
 
 // Funciones del programa
 
@@ -20,11 +19,11 @@ using namespace std;
 
 int main()
 {
-	cout << "\n________________________________START\n\n";
+    cout << "\n_________________________________________START\n\n";
 
 	// Declaración de variables
 
-	cout << "\n________________________________EXIT\n\n";
+    cout << "\n_________________________________________EXIT\n\n";
 	return 0;
 }
 

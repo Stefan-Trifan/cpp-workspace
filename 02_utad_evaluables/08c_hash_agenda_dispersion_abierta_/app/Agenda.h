@@ -1,8 +1,7 @@
 // Steve
 
 #include <string>
-#include "Contacto.h"
-#include "ListaEnlazada.cpp"
+#include "ListaEnlazada.h"
 
 class Agenda
 {
@@ -15,13 +14,13 @@ class Agenda
          * Número actual de elementos de la tabla
          *
          * * tabla
-         * Es un vector de [capacidad] listas enlazadas.
+         * Es un vector de capacidad listas enlazadas.
          * Cada lista enlazada podrá almacenar nodos
-         * de la clase [Nodo] que contienen un elemento
+         * de la clase Nodo que contienen un elemento
          * de tipo Contacto que almacena el nombre
          * y el teléfono. Las clases ListaEnlazada,
-         * Nodo y [Contacto] se pueden encontrar en los
-         * ficheros proporcionados en [Blackboard] así
+         * Nodo y Contacto se pueden encontrar en los
+         * ficheros proporcionados en Blackboard así
          * como una función que permite imprimir listas
          * enlazadas.
          *
@@ -29,7 +28,7 @@ class Agenda
          * */
         int capacidad;
         int n;
-        // ListaEnlazada *tabla; // todo depende de ListaEnlazada.cpp
+        ListaEnlazada *tabla;
 
 	public:
 		// _____________________ Constructores
@@ -44,7 +43,5 @@ class Agenda
         bool existeContacto(long telefono);
         void eliminarContacto(long telefono);
         void introducirContacto(long telefono, string contacto);
-
-        // todo depende de ListaEnlazanda.cpp
-        // void imprimir();
+        void imprimir();
 };

@@ -1,9 +1,11 @@
 // Blackboard
+// clang-format off
 
-#include <string> // clang-format off
+#include <string> 
 using namespace std;
 
-// Estructura que representa a un contacto
+// Estructura que representa 
+// a un contacto
 struct Contacto
 {
     long telefono;

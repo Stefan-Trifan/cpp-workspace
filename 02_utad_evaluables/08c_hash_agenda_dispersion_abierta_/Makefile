@@ -1,14 +1,14 @@
 .PHONY: main run clean run_test
 
 main:
-	g++ test.cpp Agenda.cpp -o main
+	g++ app/test.cpp app/Agenda.cpp app/ListaEnlazada.cpp app/impresionListasEnlazadas.cpp -o main
 
 run:
-	g++ test.cpp Agenda.cpp -o main
+	g++ app/test.cpp app/Agenda.cpp app/ListaEnlazada.cpp app/impresionListasEnlazadas.cpp -o main
 	./main
 
 run_test:
-	g++ test.cpp Agenda.cpp -o main
+	g++ app/test.cpp app/Agenda.cpp app/ListaEnlazada.cpp app/impresionListasEnlazadas.cpp -o main
 	./main < 4.in
 
 clean:

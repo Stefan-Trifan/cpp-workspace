@@ -19,11 +19,12 @@ using namespace std;
 
 int main()
 {
-    cout << "\n_________________________________________START\n\n";
+    cout << "\n__________________________________START\n\n";
 
 	// Declaración de variables
+   cout << "Hola Mundo\n";
 
-    cout << "\n_________________________________________EXIT\n\n";
+    cout << "\n__________________________________EXIT\n\n";
 	return 0;
 }
 

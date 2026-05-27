@@ -4,6 +4,7 @@
    Inicio cabecera */
 
 #include <iostream>
+#include "ListaEnlazada.h"
 
 using namespace std;
 // clang-format off
@@ -12,12 +13,13 @@ using namespace std;
 
 int main()
 {
-    cout << "\n__________________________________START\n\n";
+    cout << "\n__________________________START\n\n";
 
 	// Declaración de variables
-   cout << "Hola Mundo\n";
+   ListaEnlazada lista;
+   cout << lista.getN() << '\n';
 
-   cout << "\n__________________________________EXIT\n\n";
+   cout << "\n__________________________EXIT\n\n";
 	return 0;
 }
 

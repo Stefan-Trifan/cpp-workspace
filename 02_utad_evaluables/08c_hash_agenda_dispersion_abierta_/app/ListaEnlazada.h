@@ -10,7 +10,8 @@
 // puntero al siguiente nodo
 class ListaEnlazada
 {
-	private:
+	// todo debug: al final CAMBIAR A PRIVATE
+	public:
 		// Puntero que apuntara al primer nodo de la lista, 
 		// o sera NULL si la lista esta vacia
 		Nodo* lista;

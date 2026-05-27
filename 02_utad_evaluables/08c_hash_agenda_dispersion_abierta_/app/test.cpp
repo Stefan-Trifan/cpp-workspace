@@ -10,13 +10,6 @@ using namespace std;
 #define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
 // clang-format on
 
-// Funciones del programa
-
-// Funciones auxiliares
-
-/* _________________________________________
-   Inicio main() */
-
 int main()
 {
     cout << "\n__________________________________START\n\n";
@@ -24,13 +17,12 @@ int main()
 	// Declaración de variables
    cout << "Hola Mundo\n";
 
-    cout << "\n__________________________________EXIT\n\n";
+   cout << "\n__________________________________EXIT\n\n";
 	return 0;
 }
 
-/* _________________________________________
-   Inicio definicion de funciones */
-
-// Funciones del programa
-
-// Funciones auxiliares
+// todos
+/**
+ * ListaEnlazada
+ * Agenda
+ */

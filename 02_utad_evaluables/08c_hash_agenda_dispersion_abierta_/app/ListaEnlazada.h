@@ -30,16 +30,17 @@ class ListaEnlazada
 		~ListaEnlazada();
 
 		// _____________________ Getter
-		Contacto getValor(int posicion);
+		Contacto getValor(int pos);
 		int getN();
-		Nodo* getNodo(int posicion);
+		Nodo* getNodo(int pos);
 
 		// _____________________ Setter
-		void setValor(int posicion, Contacto nuevoValor);
+		void setValor(int pos, Contacto nuevoValor);
 
 		// _____________________ Métodos públicos
-		void insertar(int posicion, Contacto nuevoValor);
-		void eliminar(int posicion);
+		void insertar(int pos, Contacto nuevoValor);
+		void eliminar(int pos);
 		void concatenar(ListaEnlazada* listaAConcatenar);
 		int buscar(Contacto elementoABuscar);
+		void toString(); // debug
 };

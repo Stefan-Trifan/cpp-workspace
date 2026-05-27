@@ -61,10 +61,9 @@ int ListaEnlazada::getValor(int pos)
 	// Precondiciones
 	assertdomjudge(pos >= 0 && pos < n)
 
-	    // Buscamos el nodo con getNodo(pos)
-	    // Devolvemos su valor
-	    return getNodo(pos)
-	        ->elemento;
+	// Buscamos el nodo con getNodo(pos)
+	// Devolvemos su valor
+	return getNodo(pos)->elemento;
 }
 
 /**
@@ -103,9 +102,9 @@ void ListaEnlazada::setValor(int pos, int nuevoValor)
 	// Precondiciones
 	assertdomjudge(pos >= 0 && pos < n)
 
-	    // Obtenemos el nodo con getNodo(pos)
-	    // Reemplazamos su elemento por [nuevoValor]
-	    getNodo(pos)->elemento = nuevoValor;
+	// Obtenemos el nodo con getNodo(pos)
+	// Reemplazamos su elemento por [nuevoValor]
+	getNodo(pos)->elemento = nuevoValor;
 }
 
 // ___________________________________________________
@@ -174,9 +173,9 @@ void ListaEnlazada::insertar(int pos, int nuevoValor)
 void ListaEnlazada::eliminar(int pos)
 {
 	// Precondiciones
-	assertdomjudge(pos >= 0 && pos < n)
+	assertdomjudge(pos >= 0 && pos < n);
 
-	    Nodo *aux;
+	Nodo *aux;
 
 	// Buscamos el nodo deseado:
 	if (pos == 0)

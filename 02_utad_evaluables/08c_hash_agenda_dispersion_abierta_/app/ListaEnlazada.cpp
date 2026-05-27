@@ -1,13 +1,14 @@
 // Steve
 #include "ListaEnlazada.h"
+#include "assertdomjudge.h"
+#include <iostream>
 
 // _____________________ Constructores
 // Constructor. Crea una lista de tama�o 0
 // Complejidad temporal y espacial: O(1)
-// todo 
 ListaEnlazada::ListaEnlazada()
 {
-    
+
 }
 
 // Destructor. Libera memoria
@@ -15,7 +16,7 @@ ListaEnlazada::ListaEnlazada()
 // todo 
 ListaEnlazada::~ListaEnlazada()
 {
-    
+
 }
 
 // _____________________ Getter
@@ -26,10 +27,9 @@ ListaEnlazada::~ListaEnlazada()
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
 // todo 
-Contacto ListaEnlazada::getValor(int posicion)
+Contacto ListaEnlazada::getValor(int pos)
 {
-    Contacto borrar;
-    return borrar;
+
 }
 
 // Devuelve el tama�o actual de la lista
@@ -37,7 +37,7 @@ Contacto ListaEnlazada::getValor(int posicion)
 // todo 
 int ListaEnlazada::getN()
 {
-    return 0;
+
 }
 
 // Obtiene un nodo de la lista
@@ -49,9 +49,9 @@ int ListaEnlazada::getN()
 // Complejidad temporal: O(n). Como m�ximo hace n/2 iteraciones porque decide si ir hacia delante o hacia atr�s
 // Complejidad espacial: O(1)
 // todo
-Nodo* getNodo(int posicion)
+Nodo* ListaEnlazada::getNodo(int pos)
 {
-    return nullptr;
+
 }
 
 // _____________________ Setter
@@ -63,9 +63,9 @@ Nodo* getNodo(int posicion)
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
 // todo 
-void ListaEnlazada::setValor(int posicion, Contacto nuevoValor)
+void ListaEnlazada::setValor(int pos, Contacto nuevoValor)
 {
-    
+
 }
 
 // _____________________ Métodos públicos
@@ -78,9 +78,9 @@ void ListaEnlazada::setValor(int posicion, Contacto nuevoValor)
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
 // todo 
-void ListaEnlazada::insertar(int posicion, Contacto nuevoValor)
+void ListaEnlazada::insertar(int pos, Contacto nuevoValor)
 {
-    
+	
 }
 
 // Elimina un elemento en una posici�n dada.
@@ -91,9 +91,9 @@ void ListaEnlazada::insertar(int posicion, Contacto nuevoValor)
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
 // todo 
-void ListaEnlazada::eliminar(int posicion)
+void ListaEnlazada::eliminar(int pos)
 {
-    
+	
 }
 
 // Concatena una lista al final de la lista actual
@@ -105,7 +105,7 @@ void ListaEnlazada::eliminar(int posicion)
 // todo 
 void ListaEnlazada::concatenar(ListaEnlazada* listaAConcatenar)
 {
-    
+	
 }
 
 // Busca la posici�n de un elemento en la ListaContigua
@@ -116,7 +116,11 @@ void ListaEnlazada::concatenar(ListaEnlazada* listaAConcatenar)
 // todo 
 int ListaEnlazada::buscar(Contacto elementoABuscar)
 {
-    return 0;
+
 }
 
+void ListaEnlazada::toString()
+{
+
+}
 

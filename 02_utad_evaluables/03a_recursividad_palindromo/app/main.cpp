@@ -74,6 +74,7 @@ int main()
  */
 bool comprobar_palindromo(string text, int i, int j)
 {
+    // Caso base
     if(text[i] != text[j])
     {
         return false;
@@ -82,7 +83,11 @@ bool comprobar_palindromo(string text, int i, int j)
     {
         return true;
     }
+
+    // Simplificacion del problema
     i++;
     j--;
+
+    // Llamada recursiva
     return comprobar_palindromo(text, i, j);
 }

@@ -3,8 +3,9 @@
 /* _________________________________________
    Inicio cabecera */
 
+#include "Agenda.h"
+#include "impresionListasEnlazadas.h"
 #include <iostream>
-#include "ListaEnlazada.h"
 
 using namespace std;
 // clang-format off
@@ -13,13 +14,20 @@ using namespace std;
 
 int main()
 {
-    cout << "\n__________________________START\n\n";
+	cout << "\n__________________________START\n\n";
 
-	// Declaración de variables
-   ListaEnlazada lista;
-   cout << lista.getN() << '\n';
+    Agenda* agenda = new Agenda(10);
 
-   cout << "\n__________________________EXIT\n\n";
+    agenda->introducirContacto(1000, "Steve");
+    agenda->introducirContacto(2000, "Steve");
+
+    agenda->imprimir();
+
+    cout << agenda->existeContacto(1000) << '\n';
+
+    cout << agenda->getContacto(3000) << '\n';
+
+	cout << "\n__________________________EXIT\n\n";
 	return 0;
 }
 

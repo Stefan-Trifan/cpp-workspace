@@ -8,18 +8,28 @@
 // Complejidad temporal y espacial: O(1)
 ListaEnlazada::ListaEnlazada()
 {
-    this->n = 0;
-    this->lista = nullptr;
-    this->posicionUltimoNodoAccedido = 0;
-    this->punteroUltimoNodoAccedido = nullptr;
+	this->n                          = 0;
+	this->lista                      = nullptr;
+	this->posicionUltimoNodoAccedido = 0;
+	this->punteroUltimoNodoAccedido  = nullptr;
 }
 
 // Destructor. Libera memoria
 // Complejidad temporal: O(n)
-// todo
+// * done 8
 ListaEnlazada::~ListaEnlazada()
 {
+	Nodo* aux = lista;
 
+	while (aux != nullptr)
+	{
+		Nodo* siguiente = aux->siguienteNodo;
+		delete aux;
+		aux = siguiente;
+	}
+
+	lista = nullptr;
+	n     = 0;
 }
 
 // _____________________ Getter
@@ -29,19 +39,24 @@ ListaEnlazada::~ListaEnlazada()
 // Precondiciones: posicion en [0, n-1] y n>0
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
-// todo
+// * done 2
 Contacto ListaEnlazada::getValor(int pos)
 {
-    Contacto borrar;
-    return borrar;
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n);
+
+	// Buscamos el nodo con getNodo(pos)
+	// Devolvemos su valor
+
+	return getNodo(pos)->elemento;
 }
 
 // Devuelve el tamaño actual de la lista
 // Complejidad temporal y espacial: O(1)
-// todo
+// * done 1
 int ListaEnlazada::getN()
 {
-    return this->n;
+	return this->n;
 }
 
 // Obtiene un nodo de la lista
@@ -52,10 +67,20 @@ int ListaEnlazada::getN()
 // - La lista no esta vacia (n>0)
 // Complejidad temporal: O(n). Como maximo hace n/2 iteraciones porque decide si ir hacia delante o hacia atras
 // Complejidad espacial: O(1)
-// todo
+// * done 4
 Nodo* ListaEnlazada::getNodo(int pos)
 {
-    return nullptr;
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n);
+
+	Nodo* miNodo = lista;
+
+	for (int i = 0; i < pos; i++)
+	{
+		miNodo = miNodo->siguienteNodo;
+	}
+
+	return miNodo;
 }
 
 // _____________________ Setter
@@ -66,10 +91,15 @@ Nodo* ListaEnlazada::getNodo(int pos)
 // Precondiciones: posicion en [0, n-1] y n>0
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
-// todo
+// * done 3
 void ListaEnlazada::setValor(int pos, Contacto nuevoValor)
 {
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos < n);
 
+	// Obtenemos el nodo con getNodo(pos)
+	// Reemplazamos su elemento por nuevoValor
+	getNodo(pos)->elemento = nuevoValor;
 }
 
 // _____________________ Métodos públicos
@@ -81,10 +111,33 @@ void ListaEnlazada::setValor(int pos, Contacto nuevoValor)
 // Precondiciones: posicion en [0, n]
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
-// todo
+// * done 5
 void ListaEnlazada::insertar(int pos, Contacto nuevoValor)
 {
+	// Precondiciones
+	assertdomjudge(pos >= 0 && pos <= n);
 
+	// Creamos nuevo nodo
+	Nodo* nuevoNodo          = new Nodo;
+	nuevoNodo->elemento      = nuevoValor;
+	nuevoNodo->siguienteNodo = nullptr;
+
+	if (pos == 0)
+	{
+		nuevoNodo->siguienteNodo = lista;
+		lista                    = nuevoNodo;
+	}
+	else if (pos == n)
+	{
+		getNodo(n - 1)->siguienteNodo = nuevoNodo;
+	}
+	else if (pos > 0 && pos < n)
+	{
+		nuevoNodo->siguienteNodo        = getNodo(pos);
+		getNodo(pos - 1)->siguienteNodo = nuevoNodo;
+	}
+
+	n++;
 }
 
 // Elimina un elemento en una posición dada.
@@ -94,10 +147,33 @@ void ListaEnlazada::insertar(int pos, Contacto nuevoValor)
 // Precondiciones: posicion en [0, n-1] y n>0
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
-// todo
+// * done 6
 void ListaEnlazada::eliminar(int pos)
 {
+	assertdomjudge(pos >= 0 && pos < n);
 
+	Nodo* aux;
+
+	if (pos == 0)
+	{
+		aux   = lista;
+		lista = lista->siguienteNodo;
+		delete aux;
+	}
+	else if (pos == n - 1)
+	{
+		aux                           = getNodo(n - 1);
+		getNodo(n - 2)->siguienteNodo = nullptr;
+		delete aux;
+	}
+	else if (pos > 0 && pos < n - 1)
+	{
+		aux                             = getNodo(pos);
+		getNodo(pos - 1)->siguienteNodo = getNodo(pos + 1);
+		delete aux;
+	}
+
+	n--;
 }
 
 // Concatena una lista al final de la lista actual
@@ -106,10 +182,21 @@ void ListaEnlazada::eliminar(int pos)
 // Precondici�n: listaAConcatenar!=NULL
 // Complejidad temporal: O(capacidad), siendo capacidad = listaAConcatenar.getN()
 // Complejidad espacial: O(capacidad), siendo capacidad = listaAConcatenar.getN()
-// todo
+// * todo 9
 void ListaEnlazada::concatenar(ListaEnlazada* listaAConcatenar)
 {
+	if (lista == nullptr)
+	{
+		lista = listaAConcatenar->lista;
+	}
+	else
+	{
+		Nodo* aux = getNodo(n - 1);
+        aux->siguienteNodo = listaAConcatenar->lista;
+        listaAConcatenar->lista->anteriorNodo = aux;
+	}
 
+    n += listaAConcatenar->n;
 }
 
 // Busca la posición de un elemento en la ListaContigua
@@ -117,14 +204,25 @@ void ListaEnlazada::concatenar(ListaEnlazada* listaAConcatenar)
 // Retorno: posición del elemento (de 0 a n-1) si se encuentra, o -1 en caso contrario
 // Complejidad temporal: O(n)
 // Complejidad espacial: O(1)
-// todo
+// * done 7
 int ListaEnlazada::buscar(Contacto elementoABuscar)
 {
-    return 0;
+	Nodo* miNodo = lista;
+	int pos      = 0;
+
+	while (miNodo != nullptr)
+	{
+		if (miNodo->elemento.telefono == elementoABuscar.telefono)
+		{
+			return pos;
+		}
+		miNodo = miNodo->siguienteNodo;
+		pos++;
+	}
+
+	return -1;
 }
 
 void ListaEnlazada::toString()
 {
-
 }
-

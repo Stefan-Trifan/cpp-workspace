@@ -23,12 +23,10 @@ class Agenda
          * ficheros proporcionados en Blackboard así
          * como una función que permite imprimir listas
          * enlazadas.
-         *
-         *
          * */
         int capacidad;
         int n;
-        ListaEnlazada *tabla;
+        ListaEnlazada* tabla;
 
 	public:
 		// _____________________ Constructores
@@ -38,10 +36,12 @@ class Agenda
 		// _____________________ Getter
         string getContacto(long telefono);
 
-		// _____________________ Métodos públicos
-        int obtenerPosicion (long telefono);
+		// _____________________ Métodos
         bool existeContacto(long telefono);
+        void introducirContacto(long telefono, string nombre);
         void eliminarContacto(long telefono);
-        void introducirContacto(long telefono, string contacto);
         void imprimir();
+
+    private:
+        int obtenerPosicion (long telefono);
 };

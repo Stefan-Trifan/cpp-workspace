@@ -121,10 +121,10 @@ void ListaEnlazada::insertar(int pos, int nuevoValor)
 	// Precondiciones
 	assertdomjudge(pos >= 0 && pos <= n)
 
-	    // Creamos nuevo_nodo
-	    // nuevo_nodo->elemento = nuevoValor
-	    // nuevo_nodo->siguienteNodo = nullptr
-	    Nodo *nuevoNodo      = new Nodo;
+	// Creamos nuevo_nodo
+	// nuevo_nodo->elemento = nuevoValor
+	// nuevo_nodo->siguienteNodo = nullptr
+	Nodo *nuevoNodo      = new Nodo;
 	nuevoNodo->elemento      = nuevoValor;
 	nuevoNodo->siguienteNodo = nullptr;
 

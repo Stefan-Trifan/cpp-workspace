@@ -295,3 +295,4 @@ void ListaEnlazada::toString()
 	cout << '\n';
 	cout << '\n';
 }
+

@@ -85,7 +85,6 @@ int main()
 bool buscarTesoro(char **laberinto, int *sol_x, int *sol_y, int x, int y) // Completar parámetros
 {
     // cout << "\n" << endl;
-
     bool encontrado = false;
 
     //            ☝️  👉  👇  👈
